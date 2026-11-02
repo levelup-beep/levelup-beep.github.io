@@ -37,7 +37,7 @@ export const impressum = {
 
   verantwortlichHeadline: "Verantwortlich für den Inhalt",
   verantwortlichText:
-    "Verantwortlich nach § 18 Abs. 2 MStV, jeweils erreichbar unter der Anschrift der Mareike Kirch Holding GmbH: Insa Riese für die Inhalte des Bildungsbereichs (Startseite und Adventskalender für Lehrkräfte), Mareike Kirch für die Inhalte zu Job, Business und Alltag (Seite /frauen/, Level-Check und Adventskalender „Job, Business und Alltag“).",
+    "Verantwortlich nach § 18 Abs. 2 MStV, jeweils erreichbar unter der Anschrift der Mareike Kirch Holding GmbH: Insa Riese für die Inhalte für den Bildungsbereich (die Seiten für Schule und Lehrkräfte sowie den Adventskalender für Lehrkräfte), Mareike Kirch für alle übrigen Inhalte.",
 
   abschnitte: [
     {
@@ -62,6 +62,6 @@ export const impressum = {
     },
   ],
 
-  stand: "Stand: Oktober 2026",
+  stand: "Stand: November 2026",
   zurueck: "Zurück zur Startseite",
 };

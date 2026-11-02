@@ -74,9 +74,12 @@ anderen, passe Personen, Ansprache und Beispiele an den Zielbereich an.
   Private Wohnadressen gehören nirgends hin.
 - Jeder neue Dienst (Formular, Mailtool, Terminbuchung, Video, Schrift von außen) braucht
   einen Abschnitt im Datenschutz. Ohne diesen Abschnitt geht der Dienst nicht online.
-- Rechtstexte nur ändern, wenn **Insa und Mareike beide zugestimmt** haben. Die laufende
-  Abstimmung steht auf der Vergleichsseite
+- Rechtstexte nur ändern, wenn **Insa und Mareike beide zugestimmt** haben. Die Fassung vom
+  November 2026 beruht auf dem Abgleich auf der Vergleichsseite
   https://claude.ai/artifact/PGQLFzvKty3wcTEFS6AiHt.
+- Der Abschnitt „Anmeldung zum Workshop“ (Google Forms) bleibt, bis Anmelde-Buttons und
+  Level-Check auf die Brevo-Warteliste umgestellt sind. Dann streichen, auch Google unter
+  „Übermittlung in Drittländer“.
 
 ## Nichts von außen laden
 
@@ -84,8 +87,11 @@ Die Seite soll ohne Cookie-Banner auskommen. Deshalb kommen Schriften, Bilder un
 von der eigenen Domain. Externe Dienste werden nur **verlinkt** (Calendly, Luma, LinkedIn),
 nicht eingebettet.
 
-Bekannte Ausnahme, die noch behoben wird: Die HTML-Dateien laden Schriften von Google Fonts.
-Ziel ist, die Schriften selbst mitzuliefern. Kommt keine neue Ausnahme dazu.
+Die Schriften liegen unter `public/fonts/` und werden über `/fonts/fonts.css` eingebunden.
+Neue Seiten binden genau diese Datei ein, nie Google Fonts. Der Datenschutz sagt ausdrücklich,
+dass keine Verbindung zu Google Fonts entsteht. Bekannte Ausnahme, die noch behoben wird:
+Die Workshop-Seiten in den Repos `level_up_ladies` und `level-up-workshop` laden noch
+Google Fonts.
 
 ## Gestaltung
 
@@ -124,9 +130,11 @@ Ziel ist, die Schriften selbst mitzuliefern. Kommt keine neue Ausnahme dazu.
 
 - **Ton:** Wie viel Spielsprache bleibt (Player 001, Loadout, Inventory, Goodiebag)?
 - **Job:** Wird Insa dort mitgenannt, oder nur Mareike?
-- **Rechtstexte:** welche Fassung je Abschnitt (siehe Vergleichsseite).
-- **Kontakt-Mailadresse:** Die neue Adresse kommt noch. Bis dahin `shared/kontakt.js` nicht
-  ändern.
+- **Kontakt-Mailadresse:** Künftig `hello@levelupladies.de`. Das Postfach dafür ist noch
+  nicht eingerichtet (die Domain hat noch keine MX-Einträge). Bis es Mails empfängt, bleibt
+  `riesekirch@gmail.com` in `shared/kontakt.js`. Erst umstellen, wenn ein Testmail ankommt,
+  und dann den Abschnitt „Kontaktaufnahme per E-Mail“ im Datenschutz an den Mailanbieter
+  anpassen.
 - **Inhalte aus Mareikes Entwurf** (Repo `level-up-ladies-website`) werden in diese Seite
   übernommen. Was genau, legen Insa und Mareike fest.
 
