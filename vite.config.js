@@ -4,10 +4,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-// GitHub Pages: base muss dem Repo-Namen entsprechen (https://<user>.github.io/<repo>/).
-// Fuer eine User-Page (<user>.github.io) oder eine eigene Domain: BASE_PATH=/ setzen.
+// GitHub Pages: User-Site levelup-beep.github.io mit eigener Domain levelupladies.de -> base /.
+// Fuer ein Projekt-Repo (https://<user>.github.io/<repo>/): BASE_PATH=/<repo>/ setzen.
 const root = dirname(fileURLToPath(import.meta.url))
-const base = process.env.BASE_PATH ?? '/level-up-ladies/'
+const base = process.env.BASE_PATH ?? '/'
 
 export default defineConfig({
   base,

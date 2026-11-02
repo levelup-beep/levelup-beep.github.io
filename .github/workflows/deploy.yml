@@ -24,8 +24,8 @@ jobs:
           node-version: 20
       - run: npm ci
       - name: Build
-        # base = /<repo-name>/ , damit Assets auf GitHub Pages gefunden werden
-        run: BASE_PATH="/${GITHUB_REPOSITORY#*/}/" npm run build
+        # base = / , die Seite liegt an der Wurzel von levelupladies.de (User-Site levelup-beep.github.io)
+        run: BASE_PATH=/ npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
