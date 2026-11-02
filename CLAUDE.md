@@ -46,11 +46,18 @@ nach dem alten Muster.
 
 ## Wer verantwortet was
 
-- **Schule (Bildungsbereich): nur Insa.** Mareike taucht dort nirgends auf, auch nicht im
-  Footer, bei Social-Links oder in Anmelde-Mails. Ich-Form („Wer bin ich?“).
-- **Business: Mareike.**
-- **Job: Mareike.** Ob Insa dort mitgenannt wird, ist noch offen (siehe unten).
-- **Startseite, Quiz, Rechtstexte:** gemeinsam.
+Festgelegt von Insa am 02.11.2026:
+
+- **Startseite `/`: Insa und Mareike gemeinsam**, Vorstellung „Wer sind wir?“ in der Wir-Form
+  (wie bisher auf `/frauen/`). Nur hier stehen beide nebeneinander.
+- **Schule: nur Insa**, Vorstellung in der Ich-Form („Wer bin ich?“). Mareike taucht dort
+  nirgends auf, auch nicht im Footer, bei Social-Links oder in Anmelde-Mails.
+- **Business: nur Mareike**, Ich-Form. Insa taucht dort nicht auf.
+- **Job: nur Mareike**, Ich-Form. Insa taucht dort nicht auf.
+- **Quiz, Warteliste, Rechtstexte:** gemeinsam.
+
+`/frauen/` stellt noch beide gemeinsam vor. Beim Aufteilen in `/job/` und `/business/` gilt
+die Ich-Form mit Mareike allein.
 
 Inhalte nie zwischen den Bereichen vermischen. Kopierst du etwas aus einem Bereich in einen
 anderen, passe Personen, Ansprache und Beispiele an den Zielbereich an.
@@ -131,7 +138,6 @@ Google Fonts.
 ## Noch offen – hier immer nachfragen
 
 - **Ton:** Wie viel Spielsprache bleibt (Player 001, Loadout, Inventory, Goodiebag)?
-- **Job:** Wird Insa dort mitgenannt, oder nur Mareike?
 - **Kontakt-Mailadresse:** Künftig `hello@levelupladies.de`. Das Postfach dafür ist noch
   nicht eingerichtet (die Domain hat noch keine MX-Einträge). Bis es Mails empfängt, bleibt
   `riesekirch@gmail.com` in `shared/kontakt.js`. Erst umstellen, wenn ein Testmail ankommt,

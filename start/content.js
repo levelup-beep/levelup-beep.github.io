@@ -8,9 +8,6 @@
 // OFFEN:
 //   - Business und Job haben noch keine eigenen Seiten. Die Kacheln fuehren
 //     vorerst zu /frauen/.
-//   - Die Collage ist mit KI erstellt: Bildnachweise im Impressum und Abschnitt
-//     "Bilder" in der KI-Transparenz muessen sie noch nennen (Rechtstexte nur
-//     nach Zustimmung von Insa und Mareike aendern).
 import { kontaktEintrag } from "../shared/kontakt.js";
 
 export const ticker = [
@@ -46,6 +43,52 @@ export const hero = {
     height: 1136,
     alt: "Mit KI erstellte Collage aus Schwarz-Weiß-Porträts unterschiedlicher Frauen in zerrissenem Papier",
   },
+};
+
+// Vorstellung beider Gruenderinnen in der Wir-Form, wie auf /frauen/.
+// Allein in der Ich-Form: Insa nur auf /schule/, Mareike auf Job und Business.
+export const about = {
+  kicker: "The Founders",
+  headline: "Wer sind wir?",
+  intro:
+    "Zwei Frauen, ein Ziel: KI raus aus der Buzzword-Blase und rein in deinen Alltag. Das Problem ist nie die Technologie. Es ist der Zugang.",
+  people: [
+    {
+      tag: "Player 001",
+      name: "Insa",
+      role: "Lehrerin · Mathe, Informatik, GL",
+      linkedin: "https://www.linkedin.com/in/insa-riese-303946316/",
+      initials: "IR",
+      photo: "insa.jpg",
+      photoPosition: "60% 16%",
+      photoAlt: "Insa Riese, Gründerin von Level Up Ladies",
+      photoLabel: "Foto: public/frauen/insa.jpg",
+      paragraphs: [
+        "Ich bin Insa. Hauptberuflich unterrichte ich an einer Gesamtschule in NRW, daneben bringe ich Erwachsenen bei, wie sie mit KI arbeiten — statt sie nur auszuprobieren.",
+        "Ich sehe überall dasselbe Muster: Frauen, die KI längst nutzen könnten, sich aber nicht rantrauen. Oder sie nutzen, ohne je über den ersten Chat hinauszukommen. Genau da setzen wir an.",
+      ],
+      quote: "Ohne Angst. Ohne Zauberei. Ohne die ganzen Buzzwords.",
+    },
+    {
+      tag: "Player 002",
+      name: "Mareike",
+      role: "Ingenieurin · Unternehmerin · KI-Trainerin",
+      linkedin: "https://www.linkedin.com/in/mareikekirch/",
+      initials: "MK",
+      photo: "mareike.jpg",
+      photoPosition: "62% 22%",
+      photoAlt: "Mareike Kirch, Ingenieurin, Unternehmerin und KI-Trainerin",
+      photoLabel: "Foto: public/frauen/mareike.jpg",
+      paragraphs: [
+        "Ich bin Mareike. Ingenieurin, Unternehmerin und KI-Trainerin. Ich habe den Konzern verlassen und ein Bootcamp mitgegründet. Dann hat KI unser Geschäftsmodell getroffen.",
+        "Heute nutze ich sie jeden Tag und zeige Frauen in Job und Business, wie sie Claude in ihrem Arbeitsalltag nutzen.",
+      ],
+      quote: "Kein Talent-Problem. Ein Zugangs-Problem.",
+    },
+  ],
+  accent: "Knowledge = Power",
+  scribble: "Nicht warten, bis man uns fragt",
+  closing: "Nicht warten, bis man uns fragt. Wir machen das einfach selbst.",
 };
 
 export const kurse = {
@@ -87,6 +130,7 @@ export const footer = {
   linksHeadline: "Backstage",
   links: [
     { label: "Deine Kurse", to: "#wege" },
+    { label: "Wer sind wir?", to: "#ueber-uns" },
     { label: "Für die Schule", to: "schule/" },
     { label: "Für Job und Business", to: "frauen/" },
     { label: "Warteliste", to: "warteliste/" },

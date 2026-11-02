@@ -1,6 +1,7 @@
 import Hero from "./components/Hero.jsx";
 import Ticker from "./components/Ticker.jsx";
 import Kurse from "./components/Kurse.jsx";
+import AboutTeam from "./components/AboutTeam.jsx";
 import Footer from "./components/Footer.jsx";
 import { useReveal } from "./hooks/useReveal.js";
 import { useHashScroll } from "../shared/useHashScroll.js";
@@ -20,6 +21,8 @@ export default function App() {
         <Hero />
         <Ticker tone="light" reverse />
         <Kurse />
+        <Ticker />
+        <AboutTeam />
       </main>
       <Footer />
     </>

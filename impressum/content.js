@@ -54,7 +54,7 @@ export const impressum = {
     },
     {
       titel: "Bildnachweise",
-      text: "Die Porträt- und Hintergrundmotive im Kopfbereich sind KI-generiert (Google Gemini) und stammen aus dem Präsentationsmaterial von Level Up, Ladies!. Die Fotos von Insa Riese und Mareike Kirch sind private Aufnahmen und werden mit Einwilligung der abgebildeten Personen verwendet.",
+      text: "Die Porträt- und Hintergrundmotive im Kopfbereich sind KI-generiert (Google Gemini) und stammen aus dem Präsentationsmaterial von Level Up, Ladies!. Die Collage auf der Startseite ist mit Google Gemini in NotebookLM erstellt und zeigt keine realen Personen. Die Fotos von Insa Riese und Mareike Kirch sind private Aufnahmen und werden mit Einwilligung der abgebildeten Personen verwendet.",
     },
     {
       titel: "Verbraucherstreitbeilegung",

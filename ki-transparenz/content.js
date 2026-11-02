@@ -23,7 +23,7 @@ export const kiTransparenz = {
     },
     {
       titel: "Bilder",
-      text: "Das große Porträt im Eingangsbereich der Seite wurde mit einer Bild-KI erzeugt und zeigt keine reale Person. Die Fotos von Insa Riese und Mareike Kirch sind echte Aufnahmen.",
+      text: "Die Collage auf der Startseite ist mit Google Gemini in NotebookLM erstellt. Die Frauen darauf sind keine realen Personen und keine Teilnehmerinnen. Das große Porträt im Eingangsbereich der Unterseiten wurde ebenfalls mit einer Bild-KI erzeugt und zeigt keine reale Person. Die Fotos von Insa Riese und Mareike Kirch sind echte Aufnahmen.",
     },
     {
       titel: "Kein KI-System auf dieser Seite",
