@@ -36,8 +36,10 @@ Ziel (beschlossen am 02.11.2026, wird schrittweise umgebaut):
 | `/job/`, `/job/workshop/` | Landingpage und Workshop-Seite Job |
 | `/quiz/`, `/impressum/`, `/datenschutz/`, `/ki-transparenz/` | gemeinsam für alle Bereiche |
 
-Stand heute: `/` ist noch die Landingpage für den Bildungsbereich, `/frauen/` die für alle
-anderen. Die Workshop-Seiten liegen noch in eigenen Repos (`level_up_ladies`,
+Stand heute: `/` ist die Startseite für alle (Ordner `start/`, Kopfbereich und Kurs-Kacheln
+aus Mareikes Entwurf). `/schule/` ist die Landingpage für den Bildungsbereich (`schule/index.html`
+mit `src/`), `/frauen/` die für Job und Business, `/warteliste/` das Brevo-Formular. Die
+Kacheln Business und Job führen vorerst zu `/frauen/`. Die Workshop-Seiten liegen noch in eigenen Repos (`level_up_ladies`,
 `level-up-workshop`) und erscheinen unter `levelupladies.de/level_up_ladies/` und
 `levelupladies.de/level-up-workshop/`. Neue Seiten nach der Zielstruktur anlegen, nicht
 nach dem alten Muster.

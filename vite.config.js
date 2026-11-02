@@ -14,12 +14,16 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     rollupOptions: {
-      // Zwei Landingpages aus einem Projekt:
-      //   /         -> Zielgruppe Bildungsbereich (index.html)
-      //   /frauen/  -> Zielgruppe alle Frauen (frauen/index.html)
-      //   /quiz/    -> Leadmagnet "Der Level-Check" (quiz/index.html)
+      // Mehrere Seiten aus einem Projekt:
+      //   /             -> Startseite fuer alle drei Bereiche (index.html + start/)
+      //   /schule/      -> Zielgruppe Bildungsbereich (schule/index.html + src/)
+      //   /frauen/      -> Zielgruppe Job, Business und Alltag (frauen/index.html)
+      //   /quiz/        -> Leadmagnet "Der Level-Check" (quiz/index.html)
+      //   /warteliste/  -> Brevo-Warteliste (warteliste/index.html)
       input: {
         main: resolve(root, 'index.html'),
+        schule: resolve(root, 'schule/index.html'),
+        warteliste: resolve(root, 'warteliste/index.html'),
         frauen: resolve(root, 'frauen/index.html'),
         quiz: resolve(root, 'quiz/index.html'),
         impressum: resolve(root, 'impressum/index.html'),

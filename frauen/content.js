@@ -73,16 +73,16 @@ export const about = {
     {
       tag: "Player 002",
       name: "Mareike",
-      role: "Karriere-Expertin · Gründerin, Design Your Career",
+      role: "Ingenieurin · Unternehmerin · KI-Trainerin",
       linkedin: "https://www.linkedin.com/in/mareikekirch/",
       initials: "MK",
       photo: "mareike.jpg",
       photoPosition: "62% 22%",
-      photoAlt: "Mareike Kirch, Expertin für Karriereentwicklung",
+      photoAlt: "Mareike Kirch, Ingenieurin, Unternehmerin und KI-Trainerin",
       photoLabel: "Foto: public/frauen/mareike.jpg",
       paragraphs: [
-        "Ich bin Mareike. Ich begleite Frauen ab 30 durch den Umbruch: Jobwechsel, Neuausrichtung, KI im Arbeitsalltag. Heute als Gründerin und Geschäftsführerin von Design Your Career, davor als Co-Founderin und CEO von Coding Bootcamps Europe.",
-        "In der Beratung sehe ich es täglich: Es fehlt nicht das Können, es fehlt der Zugang. Wer ihre Werkzeuge beherrscht, verhandelt anders – über ihr Gehalt, ihre Rolle und ihre Zukunft.",
+        "Ich bin Mareike. Ingenieurin, Unternehmerin und KI-Trainerin. Ich habe den Konzern verlassen und ein Bootcamp mitgegründet. Dann hat KI unser Geschäftsmodell getroffen.",
+        "Heute nutze ich sie jeden Tag und zeige Frauen in Job und Business, wie sie Claude in ihrem Arbeitsalltag nutzen.",
       ],
       quote: "Kein Talent-Problem. Ein Zugangs-Problem.",
     },
@@ -224,9 +224,10 @@ export const footer = {
   social: [
     { label: "LinkedIn Insa", href: "https://www.linkedin.com/in/insa-riese-303946316/" },
     { label: "LinkedIn Mareike", href: "https://www.linkedin.com/in/mareikekirch/" },
+    { label: "Instagram Mareike", href: "https://www.instagram.com/mareike.kirch/" },
   ],
   outro: "Setup gemacht. Masterprompt läuft. Kreativ gestartet.",
-  crossLink: { label: "Du bist Lehrerin? → Zur Seite für den Bildungsbereich", to: "" },
+  crossLink: { label: "Du bist Lehrerin? → Zur Seite für den Bildungsbereich", to: "schule/" },
   quizLink: { label: "Der Level-Check: Wo stehst du im KI-Gap?", to: "quiz/" },
   legal: [
     { label: "Impressum", to: "impressum/" },
