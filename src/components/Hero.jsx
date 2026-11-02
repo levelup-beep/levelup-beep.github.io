@@ -99,17 +99,18 @@ export default function Hero() {
         </div>
 
         {/* ---------------- Right: Porträt ---------------- */}
-        <div className="reveal relative mx-auto w-full max-w-[250px] md:ml-auto md:mr-0 md:max-w-[340px]">
+        <div className="reveal relative mx-auto w-full max-w-[300px] md:ml-auto md:mr-0 md:max-w-[400px]">
           <Tape className="-left-4 -top-3 z-20" rotate={-14} width={120} />
           <Tape className="-right-5 bottom-8 z-20" rotate={-16} width={100} />
 
           <div className="relative border border-magenta/50 glow-box">
             <img
-              src={`${import.meta.env.BASE_URL}hero-portrait.png`}
+              src={`${import.meta.env.BASE_URL}schule/insa-hero.jpg`}
               alt={hero.portraitAlt}
               className="block h-auto w-full"
-              width="324"
-              height="687"
+              width="900"
+              height="1200"
+              fetchPriority="high"
             />
             <div
               aria-hidden="true"

@@ -33,7 +33,7 @@ export const hero = {
   },
   ctaPrimary: "Jetzt anmelden",
   ctaSecondary: "Level 01 ansehen",
-  portraitAlt: "Porträt einer Frau in Schwarz-Weiß mit Neon-Pink Akzenten",
+  portraitAlt: "Insa in Schwarz-Weiß am Schreibtisch, das Kinn auf die Hand gestützt",
 };
 
 // Den Workshop fuer den Bildungsbereich gibt Insa allein.
