@@ -17,6 +17,8 @@ export default defineConfig({
       // Mehrere Seiten aus einem Projekt:
       //   /             -> Startseite fuer alle drei Bereiche (index.html + start/)
       //   /schule/      -> Zielgruppe Bildungsbereich (schule/index.html + src/)
+      //   /job/         -> Bereich Job, Mareike (job/ + bereich/)
+      //   /business/    -> Bereich Business, Mareike (business/ + bereich/)
       //   /frauen/      -> Zielgruppe Job, Business und Alltag (frauen/index.html)
       //   /quiz/        -> Leadmagnet "Der Level-Check" (quiz/index.html)
       //   /warteliste/  -> Brevo-Warteliste (warteliste/index.html)
@@ -24,6 +26,8 @@ export default defineConfig({
         main: resolve(root, 'index.html'),
         schule: resolve(root, 'schule/index.html'),
         warteliste: resolve(root, 'warteliste/index.html'),
+        job: resolve(root, 'job/index.html'),
+        business: resolve(root, 'business/index.html'),
         frauen: resolve(root, 'frauen/index.html'),
         quiz: resolve(root, 'quiz/index.html'),
         impressum: resolve(root, 'impressum/index.html'),

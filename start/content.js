@@ -5,9 +5,6 @@
 // (Repo level-up-ladies-website, index.html), Entscheidung Insa 02.11.2026.
 // Nur Vornamen (siehe CLAUDE.md).
 //
-// OFFEN:
-//   - Business und Job haben noch keine eigenen Seiten. Die Kacheln fuehren
-//     vorerst zu /frauen/.
 import { kontaktEintrag } from "../shared/kontakt.js";
 
 export const ticker = [
@@ -101,7 +98,7 @@ export const kurse = {
       versprechen: "Anfragen, Angebote und Verwaltung als feste Abläufe abgeben. Mit Mareike.",
       fakten: ["Business Automation mit KI", "Effizienz für Solo-Unternehmerinnen"],
       button: "Zum Kurs",
-      to: "frauen/",
+      to: "business/",
     },
     {
       titel: "In der Schule",
@@ -119,7 +116,7 @@ export const kurse = {
       versprechen: "Mails, Protokolle und Office-Aufgaben schneller vom Tisch. Mit Mareike.",
       fakten: ["Der eine Tag", "Sechs Wochen neben der Arbeit", "Die Intensivwoche"],
       button: "Zu den Kursen",
-      to: "frauen/",
+      to: "job/",
     },
   ],
 };
@@ -132,7 +129,8 @@ export const footer = {
     { label: "Deine Kurse", to: "#wege" },
     { label: "Wer sind wir?", to: "#ueber-uns" },
     { label: "Für die Schule", to: "schule/" },
-    { label: "Für Job und Business", to: "frauen/" },
+    { label: "Für den Job", to: "job/" },
+    { label: "Für dein Business", to: "business/" },
     { label: "Warteliste", to: "warteliste/" },
   ],
   contactHeadline: "Kontakt",

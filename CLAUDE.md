@@ -38,8 +38,10 @@ Ziel (beschlossen am 02.11.2026, wird schrittweise umgebaut):
 
 Stand heute: `/` ist die Startseite für alle (Ordner `start/`, Kopfbereich und Kurs-Kacheln
 aus Mareikes Entwurf). `/schule/` ist die Landingpage für den Bildungsbereich (`schule/index.html`
-mit `src/`), `/frauen/` die für Job und Business, `/warteliste/` das Brevo-Formular. Die
-Kacheln Business und Job führen vorerst zu `/frauen/`. Die Workshop-Seiten liegen noch in eigenen Repos (`level_up_ladies`,
+mit `src/`), `/job/` und `/business/` sind Mareikes Seiten (Texte in `job/content.js` und
+`business/content.js`, Gemeinsames in `bereich/gemeinsam.js`, Aufbau in
+`bereich/KursSeite.jsx`), `/warteliste/` das Brevo-Formular. `/frauen/` (beide gemeinsam) ist
+nicht mehr von der Startseite verlinkt und wird nicht weiter ausgebaut. Die Workshop-Seiten liegen noch in eigenen Repos (`level_up_ladies`,
 `level-up-workshop`) und erscheinen unter `levelupladies.de/level_up_ladies/` und
 `levelupladies.de/level-up-workshop/`. Neue Seiten nach der Zielstruktur anlegen, nicht
 nach dem alten Muster.
