@@ -1,3 +1,4 @@
+import TapeNav from "./components/TapeNav.jsx";
 import Button from "./components/Button.jsx";
 import Marker from "./components/Marker.jsx";
 import Tape from "./components/Tape.jsx";
@@ -55,6 +56,7 @@ function Hero({ hero, cta }) {
       />
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 md:grid-cols-[1.15fr_0.85fr] md:items-center md:px-10">
         <div className="reveal relative">
+          <TapeNav aktiv={hero.bereich} className="mb-8 md:hidden" />
           <p className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] font-semibold uppercase tracking-[0.34em] text-magenta">
             <span className="glow-text">{hero.kicker}</span>
             <span aria-hidden="true" className="h-px w-10 bg-magenta/60" />
@@ -101,9 +103,10 @@ function Hero({ hero, cta }) {
         </div>
 
         <div className="reveal relative mx-auto w-full max-w-[520px]">
+          <TapeNav aktiv={hero.bereich} className="mb-8 hidden md:block" />
+          <div className="relative border border-magenta/50 glow-box">
           <Tape className="-left-4 -top-3 z-20" rotate={-12} width={120} />
           <Tape className="-right-5 bottom-8 z-20" rotate={-16} width={100} />
-          <div className="relative border border-magenta/50 glow-box">
             <img
               src={`${base}${hero.bild.src}`}
               alt={hero.bild.alt}

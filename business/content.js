@@ -19,6 +19,7 @@ export const seite = {
   ticker,
   cta,
   hero: {
+    bereich: "business",
     kicker: "KI für dein Business",
     kicker2: "Nur für Frauen",
     headline: ["Dein Business.", "Deine KI.", "Dein System."],
