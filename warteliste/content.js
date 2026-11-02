@@ -18,7 +18,6 @@ export const warteliste = {
     headline: "Sicher dir deinen Platz auf der Warteliste.",
     absaetze: [
       "Im Dezember starten wir mit unseren neuen Kursen. Die Plätze sind begrenzt. Wer auf der Warteliste steht, bekommt Termine und alle Infos vor allen anderen.",
-      "Dazu bekommst du das PDF zum KI-Adventskalender „Deine eigene KI-Assistentin in 24 Schritten“ und die Einladung zum kostenlosen Webinar „Claude kennt dich“.",
     ],
     einwilligung:
       "Ich möchte Infos zu den neuen Kursen, das PDF zum KI-Adventskalender, die Einladung zum nächsten Webinar und die Mails von Level Up, Ladies! bekommen. Abmelden geht jederzeit. Alles Weitere steht im",
