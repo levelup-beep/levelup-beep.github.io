@@ -417,6 +417,17 @@ export default function KursSeite({ seite }) {
               </Button>
             </div>
             <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white/80">{seite.glow.note}</p>
+            {seite.glow.buchen && (
+              <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.24em] text-white/80">
+                {seite.glow.buchen.frage}{" "}
+                <a
+                  href={seite.glow.buchen.href}
+                  className="font-bold text-white underline underline-offset-4 hover:no-underline"
+                >
+                  {seite.glow.buchen.link}
+                </a>
+              </p>
+            )}
           </div>
         </section>
       </main>

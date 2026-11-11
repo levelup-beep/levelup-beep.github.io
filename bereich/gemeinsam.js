@@ -1,7 +1,7 @@
 // Texte, die auf /job/ und /business/ gleich sind.
 // Quelle: Mareikes Entwurf (Repo level-up-ladies-website, fuer-den-job.html und
 // fuers-business.html), Stand 02.11.2026. Nur Vornamen, Ich-Form, nur Mareike.
-import { kontaktEintrag } from "../shared/kontakt.js";
+import { kontaktEintrag, kontaktMail } from "../shared/kontakt.js";
 
 export const ticker = [
   "Klick. Prompt. Done.",
@@ -101,6 +101,11 @@ export const glow = {
   headline: "Glow up.",
   zeilen: ["Maximal zwölf Plätze pro Kurs.", "Die Warteliste erfährt alles zuerst."],
   note: "Online. Nur für Frauen.",
+  buchen: {
+    frage: "Du möchtest mich für einen Workshop buchen?",
+    link: "Schreib mir eine Nachricht.",
+    href: `mailto:${kontaktMail}?subject=Workshop-Anfrage%3A%20Level%20Up%2C%20Ladies%21&body=Hallo%20Mareike%2C%0D%0A%0D%0A`,
+  },
 };
 
 // Footer: nur Mareike (Ich-Form-Bereich), keine Social-Links von Insa.
