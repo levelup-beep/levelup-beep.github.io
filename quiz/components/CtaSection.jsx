@@ -53,6 +53,18 @@ export default function CtaSection() {
         <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/85">
           {cta.note}
         </p>
+
+        {cta.buchen && (
+          <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/85">
+            {cta.buchen.frage}{" "}
+            <a
+              href={cta.buchen.href}
+              className="font-bold text-white underline underline-offset-4 hover:no-underline"
+            >
+              {cta.buchen.link}
+            </a>
+          </p>
+        )}
       </div>
     </section>
   );

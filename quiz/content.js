@@ -1,7 +1,7 @@
 // Inhalte des Leadmagneten "Der Level-Check" (/quiz/).
 // Eigenstaendige Datei — Seite 1 (src/data/content.js) und Seite 2 (frauen/content.js)
 // bleiben davon unberuehrt. Wording, Farben und Schriften folgen /frauen/.
-import { kontaktEintrag } from "../shared/kontakt.js";
+import { kontaktEintrag, kontaktMail } from "../shared/kontakt.js";
 //
 // OFFEN / NOCH ZU PRUEFEN:
 //   - gap.stats  -> Quellenangaben pruefen und in stats[].source eintragen,
@@ -13,10 +13,6 @@ import { kontaktEintrag } from "../shared/kontakt.js";
 // WICHTIG: Der Test rechnet ausschliesslich im Browser. Es werden keine Antworten
 // gespeichert und nichts an einen Server geschickt — deshalb braucht diese Seite
 // heute keine Einwilligung.
-
-// Google-Formular fuer alle Anmeldungen — Buttons wie Footer greifen darauf zu.
-const GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSewJBJ9aKOCzzsMVyLf5RTiJwdLGbUws9mINSYqgWMp_XOcuw/viewform";
 
 export const ticker = [
   "Klick. Prompt. Done.",
@@ -366,9 +362,14 @@ export const cta = {
     "Der Workshop bringt dich aufs nächste Level.",
   ],
   song: "Klick. Prompt. Done. – Das ist dein Glow-up.",
-  button: "Platz sichern",
+  button: "Auf die Warteliste",
   secondary: "Zur Workshop-Seite",
-  note: "Plätze sind limitiert. Der Workshop startet am 12. September 2026 um 10:30 Uhr.",
+  note: "Du hast Interesse an einem Workshop? Setz dich auf die Warteliste, dann verpasst du keine Info.",
+  buchen: {
+    frage: "Du möchtest uns für einen Workshop buchen?",
+    link: "Schreib uns eine Nachricht.",
+    href: `mailto:${kontaktMail}?subject=Workshop-Anfrage%3A%20Level%20Up%2C%20Ladies%21&body=Hallo%20Insa%20und%20Mareike%2C%0D%0A%0D%0A`,
+  },
 };
 
 export const footer = {
@@ -378,7 +379,7 @@ export const footer = {
   links: [
     { label: "Der Level-Check", to: "#test" },
     { label: "Die Workshop-Season", to: "../#serie" },
-    { label: "Anmeldung", to: GOOGLE_FORM_URL },
+    { label: "Warteliste", to: "/warteliste/" },
   ],
   contactHeadline: "Kontakt",
   contact: [kontaktEintrag],
@@ -398,75 +399,10 @@ export const footer = {
   madeWith: "Made with ❤️ and Claude",
 };
 
-// Anmeldung: fuehrt zum Google-Formular, wie auf den anderen Seiten.
-// Ist googleFormUrl leer, faellt die Funktion auf eine vorbereitete E-Mail
-// zurueck — dort landet dann zusaetzlich das Testergebnis in Betreff und Text.
-export const signup = {
-  googleFormUrl: GOOGLE_FORM_URL,
-};
-
-// Vorausgefuellte Felder im Google-Formular. Google nimmt sie als Query-Parameter
-// entgegen ("Link zum Vorausfuellen abrufen" erzeugt genau diese Form).
-//
-//   quizGemacht -> die Ja/Nein-Frage "Hast du unser Quiz gemacht?"
-//   level       -> das Kurzantwort-Feld "Wenn du magst, verrate uns dein Level"
-//                  im Abschnitt "KI Level"
-//
-// Passt ein Wert zu keiner Antwortoption, laesst Google das Feld einfach leer.
-// Ein falscher Eintrag hier kann das Formular also nicht kaputtmachen.
-//
-// Die IDs ueberleben ein Umbenennen der Frage im Formular — nur das Loeschen und
-// Neuanlegen eines Feldes vergibt eine neue. Kommt das Level in den Antworten
-// nicht an, sind diese beiden IDs als Erstes zu pruefen; sie stehen nur hier.
-const FORM_FELDER = {
-  quizGemacht: { id: "entry.1471499679", wert: "Ja" },
-  level: { id: "entry.418786928" },
-};
-
-/**
- * Nur Anmeldungen von der Ergebnisseite bekommen die Vorausfuellung — dort ist
- * belegt, dass der Test wirklich gemacht wurde. Der Button im unteren CTA-Block
- * steht vor dem Test und fuehrt deshalb auf das leere Formular.
- */
-function formularMitErgebnis(levelTitle) {
-  const p = new URLSearchParams({ usp: "pp_url" });
-
-  if (FORM_FELDER.quizGemacht) {
-    p.set(FORM_FELDER.quizGemacht.id, FORM_FELDER.quizGemacht.wert);
-  }
-  if (FORM_FELDER.level) {
-    p.set(FORM_FELDER.level.id, levelTitle);
-  }
-
-  const trenner = signup.googleFormUrl.includes("?") ? "&" : "?";
-  return `${signup.googleFormUrl}${trenner}${p.toString()}`;
-}
-
-export function signupHref(levelTitle) {
-  if (signup.googleFormUrl) {
-    return levelTitle ? formularMitErgebnis(levelTitle) : signup.googleFormUrl;
-  }
-
-  const level = levelTitle ? encodeURIComponent(levelTitle) : null;
-
-  const subject = level
-    ? `Anmeldung%3A%20Level%20Up%2C%20Ladies%21%20am%2012.09.2026%20%E2%80%94%20${level}`
-    : "Anmeldung%3A%20Level%20Up%2C%20Ladies%21%20am%2012.09.2026";
-
-  const body =
-    "Hallo Insa und Mareike,%0D%0A%0D%0A" +
-    (level
-      ? `ich habe den Level-Check gemacht. Mein Ergebnis: ${level}.%0D%0A`
-      : "") +
-    "Ich moechte mir einen Platz im Workshop am 12. September 2026 um 10:30 Uhr sichern." +
-    "%0D%0A%0D%0AName:%0D%0AWomit%20arbeitest%20du%3F%0D%0A%0D%0AViele Gruesse";
-
-  // Die Adresse steht bewusst nicht am Stueck im Quelltext, damit
-  // Adress-Sammler sie nicht einfach herauslesen koennen. Erst hier wird
-  // sie zusammengesetzt — der Anmelde-Button funktioniert dadurch normal.
-  const empfaenger = ["riesekirch", "gmail.com"].join("@");
-
-  return `mailto:${empfaenger}?subject=${subject}&body=${body}`;
+// Anmeldung: Alle Anmelde-Buttons fuehren zur Brevo-Warteliste.
+// Das Testergebnis wird dabei nicht mehr mitgegeben.
+export function signupHref() {
+  return `${import.meta.env.BASE_URL}warteliste/`;
 }
 
 // Sobald ein Formular steht (ROADMAP 2.1) und die Datenschutzerklaerung

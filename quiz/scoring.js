@@ -90,7 +90,7 @@ export function alsText({ praxis, mut, level, gapFall }) {
     "",
     "-----------------------------------",
     "Level Up, Ladies! — KI-Power fuer Frauen in Job, Business und Alltag",
-    "Workshop 'Claude kennt dich' am 12. September 2026, 10:30 Uhr",
+    "Workshop-Termine und Warteliste: levelupladies.de/warteliste/",
     "Insa & Mareike",
   ];
 

@@ -4,9 +4,6 @@
 // machen daraus automatisch einen Link (siehe Button.jsx).
 import { kontaktEintrag, kontaktMail } from "../../shared/kontakt.js";
 
-// Google-Formular fuer alle Anmeldungen — Buttons wie Footer greifen darauf zu.
-const GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSewJBJ9aKOCzzsMVyLf5RTiJwdLGbUws9mINSYqgWMp_XOcuw/viewform";
 
 export const ticker = [
   "Klick. Prompt. Done.",
@@ -31,7 +28,7 @@ export const hero = {
     midRight: "Hack the system",
     bottomLeft: "Knowledge = Power",
   },
-  ctaPrimary: "Jetzt anmelden",
+  ctaPrimary: "Auf die Warteliste",
   ctaSecondary: "Level 01 ansehen",
   portraitAlt: "Insa in Schwarz-Weiß am Schreibtisch, das Kinn auf die Hand gestützt",
 };
@@ -103,7 +100,7 @@ export const workshop = {
     "10 Minuten Zeit für eine kurze Befragung",
     "Die Bereitschaft, was Neues zu probieren",
   ],
-  ctaLabel: "Platz sichern",
+  ctaLabel: "Auf die Warteliste",
 };
 
 export const series = {
@@ -144,8 +141,13 @@ export const cta = {
   headline: "Glow up.",
   subheading: ["Lass uns den digitalen Gap schließen.", "Gemeinsam. Mit Claude. Ohne Angst."],
   song: "Klick. Prompt. Done. – Das ist dein Glow-up.",
-  button: "Jetzt anmelden",
-  note: "Plätze sind limitiert. Der Workshop startet am 12. September 2026 um 10:30 Uhr.",
+  button: "Auf die Warteliste",
+  note: "Du hast Interesse an einem Workshop? Setz dich auf die Warteliste, dann verpasst du keine Info.",
+  buchen: {
+    frage: "Du möchtest mich für einen Workshop buchen?",
+    link: "Schreib mir eine Nachricht.",
+    href: `mailto:${kontaktMail}?subject=Workshop-Anfrage%3A%20Level%20Up%2C%20Ladies%21&body=Hallo%20Insa%2C%0D%0A%0D%0A`,
+  },
 };
 
 export const footer = {
@@ -157,7 +159,7 @@ export const footer = {
   links: [
     { label: "Über Level Up Ladies", to: "#ueber-mich" },
     { label: "Die Workshop-Season", to: "#serie" },
-    { label: "Anmeldung", to: GOOGLE_FORM_URL },
+    { label: "Warteliste", to: "/warteliste/" },
   ],
   contactHeadline: "Kontakt",
   contact: [kontaktEintrag],
@@ -177,22 +179,5 @@ export const footer = {
   madeWith: "Made with ❤️ and Claude",
 };
 
-// Anmeldung.
-// 1. Google-Formular anlegen, dann "Senden" -> Link-Symbol -> Link kopieren.
-// 2. Den Link hier eintragen. Ab dann fuehren alle Anmelde-Buttons dorthin.
-// Solange das Feld leer ist, oeffnen die Buttons eine vorbereitete E-Mail —
-// die Seite funktioniert also in jedem Fall.
-export const signup = {
-  googleFormUrl: GOOGLE_FORM_URL,
-  mailTo: kontaktMail,
-};
-
-const mailFallback =
-  "mailto:" +
-  signup.mailTo +
-  "?subject=Anmeldung%3A%20Level%20Up%2C%20Ladies%21%20am%2012.09.2026" +
-  "&body=Hallo%20Insa%2C%0D%0A%0D%0A" +
-  "ich%20moechte%20mir%20einen%20Platz%20im%20Workshop%20am%2012.%20September%202026%20um%2010%3A30%20Uhr%20sichern.%0D%0A%0D%0A" +
-  "Name%3A%0D%0ASchule%20%2F%20Fach%3A%0D%0A%0D%0AViele%20Gruesse";
-
-export const signupHref = signup.googleFormUrl || mailFallback;
+// Anmeldung: Alle Anmelde-Buttons fuehren zur Brevo-Warteliste.
+export const signupHref = `${import.meta.env.BASE_URL}warteliste/`;

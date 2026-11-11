@@ -203,9 +203,17 @@ export default function Result({ ergebnis, onRestart }) {
             {cta.subheading[1]}
           </h4>
           <p className="mt-5 text-[15px] leading-relaxed text-dim">{cta.note}</p>
+          {cta.buchen && (
+            <p className="mt-2 text-[15px] leading-relaxed text-dim">
+              {cta.buchen.frage}{" "}
+              <a href={cta.buchen.href} className="text-white underline underline-offset-4 hover:no-underline">
+                {cta.buchen.link}
+              </a>
+            </p>
+          )}
 
           <div className="mt-7 flex flex-col gap-3">
-            <Button href={signupHref(level.title)} className="w-full">
+            <Button href={signupHref()} className="w-full">
               {cta.button}
             </Button>
 
