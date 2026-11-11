@@ -22,14 +22,14 @@ export const hero = {
   headline: ["Level Up,", "Ladies."],
   banner: ["KI-Power für Frauen", "im Bildungsbereich"],
   tagline: ["Wir schließen den digitalen Gap.", "Gemeinsam. Mit Claude. Ohne Angst."],
-  byline: "Insa Riese · Wir schließen den digitalen Gap",
+  byline: "Insa · Wir schließen den digitalen Gap",
   scribbles: {
     topRight: "Future is female",
     midRight: "Hack the system",
     bottomLeft: "Knowledge = Power",
   },
   ctaPrimary: "Auf die Warteliste",
-  ctaSecondary: "Level 01 ansehen",
+  ctaSecondary: "Mein Angebot",
   portraitAlt: "Insa in Schwarz-Weiß am Schreibtisch, das Kinn auf die Hand gestützt",
 };
 
@@ -48,6 +48,73 @@ export const about = {
   photoAlt: "Insa Riese, Lehrerin und Gründerin von Level Up Ladies",
   photoLabel: "Foto: public/insa.jpg",
   closing: "Nicht warten, bis man uns fragt. Wir machen das einfach selbst.",
+};
+
+// "Das bekommst du": was in den Workshops steckt, statt der ausfuehrlichen
+// Level-01-Vorstellung (Insa, 11.11.2026). Alle Punkte stammen aus den
+// Level-Beschreibungen weiter unten (workshop, series) und aus "Wer bin ich".
+export const lernen = {
+  kicker: "Mit mir lernen",
+  headline: "Das bekommst du",
+  intro:
+    "In meinen Workshops richtest du Claude so ein, dass es für deinen Schulalltag arbeitet. Einmal richtig eingerichtet, reicht ein Satz.",
+  gruppen: [
+    {
+      titel: "Dein Setup",
+      punkte: [
+        "Claude kennt dein Fach, deine Klassen und deine Standards",
+        "Ein Projekt für deine wiederkehrenden Aufgaben",
+        "Eigene Prompts, die du immer wieder nutzt",
+      ],
+    },
+    {
+      titel: "Dein Material",
+      punkte: [
+        "Arbeitsblätter vom leeren Blatt bis fertig",
+        "Präsentationen, die sich fast von selbst bauen",
+        "Material, das aussieht wie gekauft",
+      ],
+    },
+    {
+      titel: "Dein Weg",
+      punkte: [
+        "Keine Vorkenntnisse nötig, nur ein Laptop und Mut",
+        "Hands-on an deinen eigenen Aufgaben",
+        "Ohne Angst, ohne Zauberei, ohne Buzzwords",
+      ],
+    },
+  ],
+  pointe: "Das erste Erfolgserlebnis kommt gleich im ersten Level: „Ja, das geht!“",
+};
+
+// "Mein Angebot": steht unten vor dem Schlussblock, angelehnt an Mareikes
+// "Deine Kurse – Drei Wege" auf /job/. Insas Workshops sind privat, keine
+// Buchung durch Schulen. Webinare ohne Rhythmus, nur "regelmaessig"
+// (Insa, 11.11.2026).
+export const angebot = {
+  kicker: "Mein Angebot",
+  headline: "Drei Wege, mit mir zu lernen",
+  intro:
+    "Für Lehrerinnen, die KI für ihren eigenen Arbeitsalltag nutzen wollen. Alle Termine bekommst du zuerst über die Warteliste.",
+  wege: [
+    {
+      titel: "Offene Webinare",
+      text: "Zum Reinschauen: Du lernst mich kennen und siehst, wie ich mit Claude arbeite.",
+      fakten: ["Regelmäßige Termine", "Einladung über die Warteliste"],
+    },
+    {
+      titel: "Season 01",
+      text: "Level für Level vom ersten Setup bis zum fertigen Material. Jedes Level ist ein eigener Workshop.",
+      fakten: ["Start mit Level 01: Claude kennt dich", "Danach Arbeitsblatt, PowerPoint und Gestaltung", "60 bis 75 Minuten pro Level"],
+      link: { label: "Alle Level ansehen", to: "#serie" },
+    },
+    {
+      titel: "Workshop-Tag am Wochenende",
+      text: "Ein Tag, hands-on: Du richtest Claude so ein, dass es dich und deine Arbeit kennt.",
+      fakten: ["Ein Tag am Wochenende", "Hands-on: Claude einrichten", "Termin über die Warteliste"],
+    },
+  ],
+  button: "Auf die Warteliste",
 };
 
 export const workshop = {
@@ -105,11 +172,18 @@ export const workshop = {
 
 export const series = {
   kicker: "Season 01",
-  headline: "Und danach?",
+  headline: "Level für Level",
   intro:
-    "Dieser Workshop ist dein Einstieg. Aber es geht weiter — Level für Level. Hier ein Überblick:",
+    "Jedes Level ist ein eigener Workshop. Du startest mit deinem Setup und baust darauf auf, bis zum fertigen Material.",
   scribble: "Level 3: Endgegner",
   workshops: [
+    {
+      level: "Level 01",
+      title: "Claude kennt dich",
+      description: "Dein Setup: Claude lernt, wer du bist und wie du arbeitest.",
+      duration: "60 Min",
+      tag: "Essential",
+    },
     {
       level: "Level 02",
       title: "Von der Idee zum Arbeitsblatt",
@@ -142,7 +216,7 @@ export const cta = {
   subheading: ["Lass uns den digitalen Gap schließen.", "Gemeinsam. Mit Claude. Ohne Angst."],
   song: "Klick. Prompt. Done. – Das ist dein Glow-up.",
   button: "Auf die Warteliste",
-  note: "Du hast Interesse an einem Workshop? Setz dich auf die Warteliste, dann verpasst du keine Info.",
+  note: "Du hast Interesse an einem Workshop mit mir? Setz dich auf die Warteliste, dann verpasst du keine Info.",
   buchen: {
     frage: "Du möchtest mich für einen Workshop buchen?",
     link: "Schreib mir eine Nachricht.",
@@ -173,7 +247,7 @@ export const footer = {
     { label: "KI-Transparenz", to: "ki-transparenz/" },
   ],
   outro: "Setup gemacht. Masterprompt läuft. Kreativ gestartet.",
-  crossLink: { label: "Nicht aus der Schule? → Die Seite für alle Frauen", to: "frauen/" },
+  crossLink: { label: "Nicht aus der Schule? → Alle Angebote auf der Startseite", to: "" },
   quizLink: { label: "Der Level-Check: Wo stehst du im KI-Gap?", to: "quiz/" },
   copyright: "© 2026 Level Up Ladies | Für Lehrerinnen, von einer Lehrerin",
   madeWith: "Made with ❤️ and Claude",

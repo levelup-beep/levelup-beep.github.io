@@ -1,7 +1,8 @@
 import Hero from "./components/Hero.jsx";
 import Ticker from "./components/Ticker.jsx";
 import About from "./components/About.jsx";
-import WorkshopDeepDive from "./components/WorkshopDeepDive.jsx";
+import Angebot from "./components/Angebot.jsx";
+import LernenMitMir from "./components/LernenMitMir.jsx";
 import SeriesTeaser from "./components/SeriesTeaser.jsx";
 import CtaSection from "./components/CtaSection.jsx";
 import Footer from "./components/Footer.jsx";
@@ -20,8 +21,10 @@ export default function App() {
         <Ticker tone="light" reverse />
         <About />
         <Ticker />
-        <WorkshopDeepDive />
+        <LernenMitMir />
         <SeriesTeaser />
+        <Ticker tone="light" reverse />
+        <Angebot />
         <CtaSection />
       </main>
       <Footer />

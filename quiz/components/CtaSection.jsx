@@ -41,7 +41,7 @@ export default function CtaSection() {
             {cta.button}
           </Button>
           <Button
-            href={`${import.meta.env.BASE_URL}frauen/`}
+            href={import.meta.env.BASE_URL}
             variant="outline"
             size="lg"
             className="w-full border-white text-white hover:bg-white hover:text-magenta sm:w-auto"

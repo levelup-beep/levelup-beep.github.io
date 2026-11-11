@@ -228,7 +228,7 @@ export default function Result({ ergebnis, onRestart }) {
             )}
 
             <Button
-              href={`${import.meta.env.BASE_URL}frauen/`}
+              href={import.meta.env.BASE_URL}
               variant="outline"
               className="w-full"
             >

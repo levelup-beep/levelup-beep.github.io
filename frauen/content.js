@@ -200,7 +200,7 @@ export const cta = {
   subheading: ["Lass uns den digitalen Gap schließen.", "Gemeinsam. Mit Claude. Ohne Angst."],
   song: "Klick. Prompt. Done. – Das ist dein Glow-up.",
   button: "Auf die Warteliste",
-  note: "Du hast Interesse an einem Workshop? Setz dich auf die Warteliste, dann verpasst du keine Info.",
+  note: "Du hast Interesse an einem Workshop mit uns? Setz dich auf die Warteliste, dann verpasst du keine Info.",
   buchen: {
     frage: "Du möchtest uns für einen Workshop buchen?",
     link: "Schreib uns eine Nachricht.",

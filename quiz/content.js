@@ -363,8 +363,8 @@ export const cta = {
   ],
   song: "Klick. Prompt. Done. – Das ist dein Glow-up.",
   button: "Auf die Warteliste",
-  secondary: "Zur Workshop-Seite",
-  note: "Du hast Interesse an einem Workshop? Setz dich auf die Warteliste, dann verpasst du keine Info.",
+  secondary: "Alle Angebote ansehen",
+  note: "Du hast Interesse an einem Workshop mit uns? Setz dich auf die Warteliste, dann verpasst du keine Info.",
   buchen: {
     frage: "Du möchtest uns für einen Workshop buchen?",
     link: "Schreib uns eine Nachricht.",
@@ -389,7 +389,7 @@ export const footer = {
     { label: "LinkedIn Mareike", href: "https://www.linkedin.com/in/mareikekirch/" },
   ],
   outro: "Nicht warten, bis man uns fragt.",
-  crossLink: { label: "Zur Workshop-Seite für Job, Business und Alltag", to: "frauen/" },
+  crossLink: { label: "Alle Angebote auf der Startseite", to: "" },
   legal: [
     { label: "Impressum", to: "impressum/" },
     { label: "Datenschutz", to: "datenschutz/" },

@@ -1,5 +1,6 @@
 import Hero from "./components/Hero.jsx";
 import Ticker from "./components/Ticker.jsx";
+import SoStartest from "./components/SoStartest.jsx";
 import Kurse from "./components/Kurse.jsx";
 import AboutTeam from "./components/AboutTeam.jsx";
 import Footer from "./components/Footer.jsx";
@@ -20,6 +21,7 @@ export default function App() {
         <Ticker />
         <Hero />
         <Ticker tone="light" reverse />
+        <SoStartest />
         <Kurse />
         <Ticker />
         <AboutTeam />

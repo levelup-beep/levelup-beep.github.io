@@ -88,6 +88,37 @@ export const about = {
   closing: "Nicht warten, bis man uns fragt. Wir machen das einfach selbst.",
 };
 
+// "So startest du": drei Schritte, direkt unter dem Kopfbereich.
+// Webinare: bewusst ohne Rhythmus und Preis, nur "regelmaessig" (Insa, 11.11.2026).
+export const start = {
+  kicker: "Dein Einstieg",
+  headline: "So startest du",
+  intro: "Drei Schritte vom ersten Reinschauen bis zu deinem eigenen KI-System.",
+  schritte: [
+    {
+      nr: "01",
+      titel: "Level-Check machen",
+      text: "In 3 Minuten weißt du, wo du mit KI stehst. Danach trägst du dich auf die Warteliste ein und bekommst alle Termine zuerst.",
+      links: [
+        { label: "Zum Level-Check", to: "quiz/" },
+        { label: "Auf die Warteliste", to: "warteliste/" },
+      ],
+    },
+    {
+      nr: "02",
+      titel: "Webinar besuchen",
+      text: "Wir bieten regelmäßig offene Webinare an, online. Du lernst uns kennen und siehst, wie wir mit Claude arbeiten. Die Einladung kommt über die Warteliste.",
+      links: [{ label: "Einladung bekommen", to: "warteliste/" }],
+    },
+    {
+      nr: "03",
+      titel: "Kurs oder Workshop wählen",
+      text: "Schule, Job oder Business: Such dir den Weg aus, der zu deiner Arbeit passt. Live in kleiner Gruppe, an deinen echten Aufgaben.",
+      links: [{ label: "Zu den Bereichen", to: "#wege" }],
+    },
+  ],
+};
+
 export const kurse = {
   kicker: "Deine Kurse",
   headline: "Wo arbeitest du?",
@@ -96,7 +127,7 @@ export const kurse = {
     {
       titel: "Im eigenen Business",
       versprechen: "Anfragen, Angebote und Verwaltung als feste Abläufe abgeben. Mit Mareike.",
-      fakten: ["Business Automation mit KI", "Effizienz für Solo-Unternehmerinnen"],
+      fakten: ["Für Solo-Unternehmerinnen", "Kurs: Business Automation mit KI", "Online, höchstens 12 Frauen"],
       button: "Zum Kurs",
       to: "business/",
     },
@@ -104,9 +135,9 @@ export const kurse = {
       titel: "In der Schule",
       versprechen: "Arbeitsblätter, Feedback und Präsentationen schneller fertig. Mit Insa.",
       fakten: [
-        "Level 01: Claude kennt dich",
-        "Level 02: Von der Idee zum Arbeitsblatt",
-        "Level 03 und 04: PowerPoint und Gestaltung",
+        "Für Lehrerinnen",
+        "Season 01: Level für Level, Start mit „Claude kennt dich“",
+        "Workshop-Tag am Wochenende: Claude einrichten, hands-on",
       ],
       button: "Zur Season",
       to: "schule/",
@@ -114,7 +145,7 @@ export const kurse = {
     {
       titel: "Im Job",
       versprechen: "Mails, Protokolle und Office-Aufgaben schneller vom Tisch. Mit Mareike.",
-      fakten: ["Der eine Tag", "Sechs Wochen neben der Arbeit", "Die Intensivwoche"],
+      fakten: ["Für angestellte Frauen", "Ein Tag, sechs Wochen oder Intensivwoche", "Online, höchstens 12 Frauen"],
       button: "Zu den Kursen",
       to: "job/",
     },

@@ -23,7 +23,7 @@ export default function SeriesTeaser() {
 
         <p className="reveal mt-6 max-w-xl text-base leading-relaxed text-dim">{series.intro}</p>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {series.workshops.map((w, i) => (
             <article
               key={w.level}
