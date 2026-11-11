@@ -397,28 +397,46 @@ export default function KursSeite({ seite }) {
           </div>
         </Abschnitt>
 
-        {/* Glow up */}
-        <section className="relative overflow-hidden bg-magenta py-20 text-center md:py-28">
-          <div className="relative mx-auto max-w-3xl px-5">
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.34em] text-white/80">
+        {/* Glow up: gleiches Design wie der Schlussblock auf /schule/ (src/components/CtaSection.jsx) */}
+        <section id="anmeldung" className="relative overflow-hidden bg-magenta py-24 md:py-32">
+          {/* Dunkler Verlauf fuer Kontrast + Rasterlinien */}
+          <div aria-hidden="true" className="absolute inset-0 bg-linear-to-b from-black/45 via-black/20 to-black/55" />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-20 [background-image:repeating-linear-gradient(90deg,#000_0_1px,transparent_1px_88px)]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/20 blur-[140px]"
+          />
+
+          <div className="reveal relative mx-auto max-w-3xl px-5 text-center md:px-10">
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.4em] text-white/90">
               {seite.glow.kicker}
             </p>
-            <h2 className="mt-4 font-display text-[64px] leading-none font-black italic text-white md:text-[110px]">
+            <h2 className="mt-4 font-display text-[64px] leading-[0.85] font-black italic text-white [text-shadow:0_0_28px_rgba(255,255,255,0.45)] sm:text-[88px] md:text-[112px]">
               {seite.glow.headline}
             </h2>
-            {seite.glow.zeilen.map((z) => (
-              <p key={z} className="mt-3 text-lg font-semibold text-white md:text-xl">
-                {z}
+            <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-white md:text-lg">
+              {seite.glow.zeilen.map((z) => (
+                <span key={z} className="block">
+                  {z}
+                </span>
+              ))}
+            </p>
+            {seite.glow.song && (
+              <p className="mt-8 font-marker text-3xl text-white [text-shadow:0_0_18px_rgba(255,255,255,0.6)] md:text-4xl">
+                {seite.glow.song}
               </p>
-            ))}
-            <div className="mt-10">
-              <Button href={href(cta.to)} variant="light" size="lg">
+            )}
+            <div className="mt-10 flex justify-center">
+              <Button href={href(cta.to)} variant="light" size="lg" className="w-full sm:w-auto">
                 {cta.label}
               </Button>
             </div>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.24em] text-white/80">{seite.glow.note}</p>
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/85">{seite.glow.note}</p>
             {seite.glow.buchen && (
-              <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.24em] text-white/80">
+              <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/85">
                 {seite.glow.buchen.frage}{" "}
                 <a
                   href={seite.glow.buchen.href}

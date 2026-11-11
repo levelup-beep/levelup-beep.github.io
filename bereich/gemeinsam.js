@@ -100,6 +100,7 @@ export const glow = {
   kicker: "Warteliste",
   headline: "Glow up.",
   zeilen: ["Maximal zwölf Plätze pro Kurs.", "Die Warteliste erfährt alles zuerst."],
+  song: "Klick. Prompt. Done. – Das ist dein Glow-up.",
   note: "Online. Nur für Frauen.",
   buchen: {
     frage: "Du möchtest mich für einen Workshop buchen?",
