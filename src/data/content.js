@@ -44,10 +44,10 @@ export const about = {
     "Deshalb mache ich Level Up Ladies: Um zu zeigen, dass KI ein Werkzeug ist, das du für dich nutzen kannst. Einmal richtig eingerichtet – und es arbeitet für dich. Ohne Angst. Ohne Zauberei. Ohne die ganzen Buzzwords.",
   ],
   accent: "Knowledge = Power",
-  scribble: "Nicht warten, bis man uns fragt",
+  scribble: "Fang einfach an",
   photoAlt: "Insa Riese, Lehrerin und Gründerin von Level Up Ladies",
   photoLabel: "Foto: public/insa.jpg",
-  closing: "Nicht warten, bis man uns fragt. Wir machen das einfach selbst.",
+  closing: "Wir warten nicht, bis es uns jemand zeigt. Wir zeigen es uns gegenseitig.",
 };
 
 // "Das bekommst du": was in den Workshops steckt, statt der ausfuehrlichen

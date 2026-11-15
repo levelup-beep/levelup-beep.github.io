@@ -388,7 +388,7 @@ export const footer = {
     { label: "LinkedIn Insa", href: "https://www.linkedin.com/in/insa-riese-303946316/" },
     { label: "LinkedIn Mareike", href: "https://www.linkedin.com/in/mareikekirch/" },
   ],
-  outro: "Nicht warten, bis man uns fragt.",
+  outro: "Wir zeigen es uns gegenseitig.",
   crossLink: { label: "Alle Angebote auf der Startseite", to: "" },
   legal: [
     { label: "Impressum", to: "impressum/" },
