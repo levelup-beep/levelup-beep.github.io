@@ -76,6 +76,10 @@ anderen, passe Personen, Ansprache und Beispiele an den Zielbereich an.
 - **Social-Links:** Insa nur LinkedIn. Mareike LinkedIn und Instagram.
 - **Bereich „Für Unternehmen“** mit Calendly-Termin bei Mareike bleibt.
 - **Kontakt-Mailadresse** steht zentral in `shared/kontakt.js`. Nirgends sonst eintragen.
+- **Startseite ohne „Player 001/002“ und „The Founders“** (15.11.2026): Die Schilder an den
+  Fotos heißen „Schule“ und „Job und Business“, das Label darüber „Wer dahintersteckt“.
+  Schlusssatz: „Wir warten nicht, bis es uns jemand zeigt. Wir zeigen es uns gegenseitig.“
+  „Future is female“ und „Knowledge = Power“ bleiben.
 
 ## Rechtstexte
 
@@ -139,7 +143,8 @@ Google Fonts.
 
 ## Noch offen – hier immer nachfragen
 
-- **Ton:** Wie viel Spielsprache bleibt (Player 001, Loadout, Inventory, Goodiebag)?
+- **Ton:** Wie viel Spielsprache bleibt auf den übrigen Seiten (Player 001 auf `/schule/`,
+  Loadout, Inventory, Goodiebag)? Für die Startseite ist es entschieden, siehe oben.
 - **Kontakt-Mailadresse:** Künftig `hello@levelupladies.de`. Das Postfach dafür ist noch
   nicht eingerichtet (die Domain hat noch keine MX-Einträge). Bis es Mails empfängt, bleibt
   `riesekirch@gmail.com` in `shared/kontakt.js`. Erst umstellen, wenn ein Testmail ankommt,

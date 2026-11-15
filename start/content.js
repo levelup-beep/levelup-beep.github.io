@@ -10,6 +10,7 @@ import { kontaktEintrag } from "../shared/kontakt.js";
 export const ticker = [
   "Klick. Prompt. Done.",
   "Das ist dein Glow-up",
+  "Deine Arbeit. Dein System.",
   "Level Up, Ladies",
   "Future is female",
   "Knowledge = Power",
@@ -45,13 +46,13 @@ export const hero = {
 // Vorstellung beider Gruenderinnen in der Wir-Form, wie auf /frauen/.
 // Allein in der Ich-Form: Insa nur auf /schule/, Mareike auf Job und Business.
 export const about = {
-  kicker: "The Founders",
+  kicker: "Wer dahintersteckt",
   headline: "Wer sind wir?",
   intro:
     "Zwei Frauen, ein Ziel: KI raus aus der Buzzword-Blase und rein in deinen Alltag. Das Problem ist nie die Technologie. Es ist der Zugang.",
   people: [
     {
-      tag: "Player 001",
+      tag: "Schule",
       name: "Insa",
       role: "Lehrerin · Mathe, Informatik, GL",
       linkedin: "https://www.linkedin.com/in/insa-riese-303946316/",
@@ -67,7 +68,7 @@ export const about = {
       quote: "Ohne Angst. Ohne Zauberei. Ohne die ganzen Buzzwords.",
     },
     {
-      tag: "Player 002",
+      tag: "Job und Business",
       name: "Mareike",
       role: "Ingenieurin · Unternehmerin · KI-Trainerin",
       linkedin: "https://www.linkedin.com/in/mareikekirch/",
@@ -84,8 +85,8 @@ export const about = {
     },
   ],
   accent: "Knowledge = Power",
-  scribble: "Nicht warten, bis man uns fragt",
-  closing: "Nicht warten, bis man uns fragt. Wir machen das einfach selbst.",
+  scribble: "Fang einfach an",
+  closing: "Wir warten nicht, bis es uns jemand zeigt. Wir zeigen es uns gegenseitig.",
 };
 
 // "So startest du": drei Schritte, direkt unter dem Kopfbereich.
