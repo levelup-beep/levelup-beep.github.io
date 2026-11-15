@@ -105,7 +105,7 @@ export const angebot = {
     {
       titel: "Season 01",
       text: "Level für Level vom ersten Setup bis zum fertigen Material. Jedes Level ist ein eigener Workshop.",
-      fakten: ["Start mit Level 01: Claude kennt dich", "Danach Arbeitsblatt, PowerPoint und Gestaltung", "60 bis 75 Minuten pro Level"],
+      fakten: ["Start mit Level 01: Deine KI kennt dich", "Danach: Sag, was du willst · Dein erstes Tool · Von der Idee zum Projekt", "60 bis 75 Minuten pro Level"],
       link: { label: "Alle Level ansehen", to: "#serie" },
     },
     {
@@ -120,27 +120,27 @@ export const angebot = {
 export const workshop = {
   level: "Level 01",
   levelTitle: "The Setup",
-  headline: "Claude kennt dich",
+  headline: "Deine KI kennt dich",
   intro:
     "Das ist dein erster Schritt in ein System, das dir dauerhaft Zeit spart. Im Workshop lernst du, wie Claude dich und deine Arbeit versteht – und wie du dein eigenes, maßgeschneidertes Setup aufbaust.",
   tapeLabel: "Essential",
   cards: [
     {
       no: "01",
-      title: "Dein Profil",
-      body: "Claude lernt, wer du bist: Dein Fach, deine Klasse, deine Standards. Nur einmal – dann reicht ein Satz.",
-      tag: "Character Setup",
+      title: "Datenschutz zuerst",
+      body: "Bevor du irgendwas eintippst: Training aus, die wichtigsten Einstellungen geprüft.",
+      tag: "Einstellungs-Check",
     },
     {
       no: "02",
-      title: "Dein Projekt",
-      body: "Speichere deine wiederkehrenden Aufgaben. Arbeitsblatt-Vorlagen, Feedback-Skripte, alles was du regelmäßig brauchst.",
-      tag: "Inventory",
+      title: "Deine KI-Visitenkarte",
+      body: "Claude lernt, wer du bist: dein Fach, deine Klassen, dein Ton. Einmal in den Einstellungen, dann kennt dich jeder Chat. Schon ein Ich-Profil? Dann machen wir ein Upgrade.",
+      tag: "Character Setup",
     },
     {
       no: "03",
-      title: "Deine Power",
-      body: "Frag einfach. Claude weiß schon, wie du es brauchst. Keine langen Erklärungen mehr. Nur noch: Idea → Done.",
+      title: "Dein Floskel-Filter",
+      body: "Wörter und Sätze, die du nie wieder lesen willst. Ab jetzt klingt Claude nach dir, nicht nach Pressemitteilung.",
       tag: "Superpower",
       highlight: true,
     },
@@ -149,8 +149,8 @@ export const workshop = {
   outcomesKicker: "Dein Goodiebag",
   outcomesHeadline: "Das nimmst du mit:",
   outcomes: [
-    "Ein Claude-Setup, das dich kennt",
-    "Ein Projekt mit deinen eigenen Prompts",
+    "Deine KI-Visitenkarte, fest in den Einstellungen",
+    "Sichere Einstellungen, Training aus",
     'Das erste Erfolgserlebnis ("Ja, das geht!")',
     "Die Grundlage für alle weiteren Level",
   ],
@@ -165,6 +165,7 @@ export const workshop = {
   bring: [
     "Deinen Laptop",
     "10 Minuten Zeit für eine kurze Befragung",
+    "Falls vorhanden: dein Ich-Profil aus dem Adventskalender oder dem Freebie",
     "Die Bereitschaft, was Neues zu probieren",
   ],
   ctaLabel: "Auf die Warteliste",
@@ -175,38 +176,38 @@ export const series = {
   headline: "Level für Level",
   intro:
     "Jedes Level ist ein eigener Workshop. Du startest mit deinem Setup und baust darauf auf, bis zum fertigen Material.",
-  scribble: "Level 3: Endgegner",
+  scribble: "Level 07: Endgegner",
   workshops: [
     {
       level: "Level 01",
-      title: "Claude kennt dich",
+      title: "Deine KI kennt dich",
       description: "Dein Setup: Claude lernt, wer du bist und wie du arbeitest.",
-      duration: "60 Min",
-      tag: "Essential",
-    },
-    {
-      level: "Level 02",
-      title: "Von der Idee zum Arbeitsblatt",
-      description: "Prozentrechnung: vom leeren Blatt zum fertigen Material in einer Sitzung.",
       duration: "60 Min",
       tag: "Einsteigerin",
     },
     {
+      level: "Level 02",
+      title: "Sag, was du willst",
+      description: "Ein Masterprompt für eine Aufgabe, die jede Woche wiederkommt.",
+      duration: "60 Min",
+      tag: "Auftraggeberin",
+    },
+    {
       level: "Level 03",
-      title: "PowerPoint automatisieren",
-      description: "Präsentationen, die sich fast von selbst bauen.",
+      title: "Dein erstes Tool",
+      description: "Quiz, Übung oder Rechner: ein eigenes kleines Tool, offline und ohne Konto.",
       duration: "75 Min",
-      tag: "Glow up",
+      tag: "Erfinderin",
     },
     {
       level: "Level 04",
-      title: "Visuell gestalten",
-      description: "Material, das aussieht wie gekauft – ohne Design-Studium.",
+      title: "Von der Idee zum Projekt",
+      description: "Ein Projekt für eine wiederkehrende Unterrichtsaufgabe, mit deinem ersten fertigen Dokument.",
       duration: "60 Min",
-      tag: "Pro-Level",
+      tag: "Projektleiterin",
     },
   ],
-  moreLabel: "5 weitere Level",
+  moreLabel: "6 weitere Level",
   moreHint: "Die komplette Season",
 };
 
