@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<!-- Level Up Ladies · Claude kennt dich · nur Level 1 (Quelle: Repo level-up-workshop) -->
+<html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude kennt dich · Level Up, Ladies!</title>
+<meta name="description" content="Level 1: Richte dein Claude-Profil ein. Mit dem Fragebogen-Prompt zum Kopieren.">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  /* =========================================================
+     LEVEL UP, LADIES  ·  Fashion-Magazine Edition
+     Schwarz · Magenta · Didone-Serife · Marker-Handschrift
+     ========================================================= */
+  :root{
+    --bg:#08080a;
+    --surface:#111114;
+    --surface-2:#18181e;
+    --border:#2a2a33;
+    --hair:#3a3a46;
+    --text:#ffffff;
+    --text-dim:#c6c5cf;
+    --text-faint:#8a8995;
+    --magenta:#fd05d4;
+    --magenta-soft:#ff5ce0;
+    --pink:#fd05d4;
+    --coral:#ff7ac8;
+    --mint:#ffffff;
+    --glow:0 0 24px rgba(253,5,212,.45);
+    --radius:0px;
+    --font-display:"Playfair Display", Didot, "Bodoni MT", Georgia, serif;
+    --font-body:"Inter", "Helvetica Neue", Arial, sans-serif;
+    --font-marker:"Caveat", "Segoe Script", cursive;
+    --font-mono:"IBM Plex Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-weight:300;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* Neon-Schimmer im Hintergrund, wie auf den Slides */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:
+      radial-gradient(820px 560px at 88% -8%, rgba(253,5,212,.16), transparent 62%),
+      radial-gradient(680px 520px at -8% 104%, rgba(253,5,212,.11), transparent 62%);
+  }
+  a{color:inherit;}
+  ::selection{background:var(--magenta); color:#000;}
+  :focus-visible{outline:2px solid var(--magenta); outline-offset:3px;}
+
+  .app{
+    display:grid;
+    grid-template-columns:272px 1fr;
+    min-height:100vh;
+    position:relative;
+    z-index:1;
+  }
+
+  /* ============ SIDEBAR · das Impressum ============ */
+  .sidebar{
+    background:rgba(8,8,10,.92);
+    border-right:1px solid var(--border);
+    padding:34px 24px 28px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+  }
+  .sidebar::-webkit-scrollbar{width:6px;}
+  .sidebar::-webkit-scrollbar-thumb{background:var(--border);}
+  .brand{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-weight:900;
+    font-size:2.05rem;
+    line-height:.92;
+    text-transform:uppercase;
+    letter-spacing:-.025em;
+    margin-bottom:10px;
+  }
+  .brand span{
+    color:var(--magenta);
+    text-shadow:var(--glow);
+  }
+  .brand-sub{
+    font-family:var(--font-marker);
+    font-size:1.08rem;
+    line-height:1.15;
+    color:var(--magenta-soft);
+    transform:rotate(-1.6deg);
+    transform-origin:left center;
+    margin-bottom:34px;
+  }
+  .nav-group-label{
+    font-family:var(--font-mono);
+    font-size:.64rem;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    color:var(--text-faint);
+    margin:26px 0 10px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--border);
+    font-weight:500;
+  }
+  .nav-group-label:first-of-type{margin-top:0;}
+  .navlink{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    border-left:2px solid transparent;
+    color:var(--text-faint);
+    font-family:var(--font-body);
+    font-size:.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    padding:11px 12px;
+    cursor:pointer;
+    transition:background .18s, color .18s, border-color .18s, letter-spacing .18s;
+  }
+  .navlink:hover{background:var(--surface-2); color:var(--text); letter-spacing:.17em;}
+  .navlink.active{
+    color:var(--text);
+    border-left-color:var(--magenta);
+    background:linear-gradient(90deg, rgba(253,5,212,.16), transparent 85%);
+  }
+  .navlink .tag{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-style:italic;
+    font-size:.95rem;
+    letter-spacing:0;
+    text-transform:none;
+    color:var(--text-faint);
+    min-width:24px;
+  }
+  .navlink.active .tag{color:var(--magenta); text-shadow:var(--glow);}
+
+  .level-progress{
+    display:flex;
+    gap:6px;
+    margin-top:32px;
+    padding-top:22px;
+    border-top:1px solid var(--border);
+  }
+  .level-progress .dot{
+    flex:1;
+    height:3px;
+    background:var(--border);
+    transition:background .25s, box-shadow .25s;
+  }
+  .level-progress .dot.done{background:var(--magenta); box-shadow:var(--glow);}
+  .level-progress-label{
+    font-family:var(--font-marker);
+    font-size:1rem;
+    color:var(--magenta-soft);
+    margin-top:10px;
+  }
+
+  /* ============ MAIN ============ */
+  .content{
+    padding:64px 72px 120px;
+    max-width:960px;
+  }
+  .page{display:none;}
+  .page.active{display:block; animation:fade .35s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;}}
+
+  /* Rubrik-Zeile: Handschrift plus ausgestanzte Ziffer */
+  .eyebrow{
+    font-family:var(--font-marker);
+    font-size:1.25rem;
+    color:var(--magenta-soft);
+    text-transform:none;
+    letter-spacing:0;
+    margin-bottom:6px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .eyebrow .num{
+    font-family:var(--font-display);
+    font-weight:900;
+    font-style:italic;
+    font-size:2.9rem;
+    line-height:1;
+    -webkit-text-stroke:1.4px var(--magenta);
+    color:transparent;
+  }
+
+  h1{
+    font-family:var(--font-display);
+    font-size:clamp(2.15rem, 4.6vw, 3.5rem);
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-.028em;
+    margin:0 0 26px;
+    line-height:.95;
+    color:var(--text);
+  }
+  h1::after{
+    content:"";
+    display:block;
+    width:78px;
+    height:4px;
+    background:var(--magenta);
+    box-shadow:var(--glow);
+    margin-top:22px;
+  }
+  h2{
+    font-family:var(--font-display);
+    font-size:1.5rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:-.005em;
+    line-height:1.15;
+    margin:58px 0 18px;
+    padding-top:20px;
+    border-top:1px solid var(--hair);
+    position:relative;
+  }
+  h2::before{
+    content:"";
+    position:absolute;
+    top:-1px; left:0;
+    width:58px; height:3px;
+    background:var(--magenta);
+  }
+  h3{
+    font-family:var(--font-display);
+    font-size:1.2rem;
+    font-weight:700;
+    letter-spacing:-.01em;
+    margin:32px 0 12px;
+  }
+  p{color:var(--text-dim); margin:0 0 16px; max-width:66ch; font-weight:300;}
+
+  /* Standfirst: kursive Serife mit Magenta-Kante */
+  .lede{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-weight:400;
+    font-size:1.32rem;
+    line-height:1.5;
+    color:#ececf1;
+    max-width:54ch;
+    border-left:2px solid var(--magenta);
+    padding-left:22px;
+    margin:0 0 10px;
+  }
+
+  /* Textmarker-Block */
+  .hint{
+    display:inline-block;
+    font-family:var(--font-body);
+    font-size:.92rem;
+    font-weight:600;
+    line-height:1.4;
+    color:#0a0a0a;
+    background:var(--magenta);
+    border:none;
+    border-radius:0;
+    padding:11px 20px;
+    margin:28px 0 10px;
+    transform:rotate(-.8deg);
+    box-shadow:0 0 34px rgba(253,5,212,.34);
+  }
+
+  /* ============ START · Cover-Karten mit Washi-Tape ============ */
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    margin-top:44px;
+  }
+  .level-card{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:0;
+    padding:30px 22px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    text-align:left;
+    cursor:pointer;
+    transition:border-color .2s, transform .2s, box-shadow .2s;
+    color:var(--text);
+    font-family:var(--font-body);
+  }
+  .level-card::before{
+    content:"";
+    position:absolute;
+    top:-11px; left:20px;
+    width:68px; height:21px;
+    background:linear-gradient(102deg, rgba(253,5,212,.9), rgba(255,92,224,.55));
+    clip-path:polygon(2% 10%, 98% 0%, 100% 90%, 0% 100%);
+    transform:rotate(-6deg);
+    transition:transform .2s;
+  }
+  .level-card:hover{
+    border-color:var(--magenta);
+    transform:translateY(-4px);
+    box-shadow:0 14px 40px rgba(253,5,212,.16);
+  }
+  .level-card:hover::before{transform:rotate(-11deg) translateX(-3px);}
+  .level-card .lc-num{
+    font-family:var(--font-mono);
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    color:var(--magenta);
+  }
+  .level-card h3{
+    margin:0;
+    font-family:var(--font-display);
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:1.28rem;
+    line-height:1.05;
+    letter-spacing:-.02em;
+    color:var(--text);
+  }
+  .level-card p{margin:0; font-size:.88rem; color:var(--text-faint); line-height:1.6;}
+  .level-card .lc-time{
+    font-family:var(--font-marker);
+    font-size:1.02rem;
+    color:var(--magenta-soft);
+    margin-top:auto;
+    padding-top:14px;
+  }
+  .level-card.c3{border-color:var(--border);}
+  .level-card.c3 .lc-num{color:var(--coral);}
+  .level-card.c3::before{background:linear-gradient(102deg, rgba(255,122,200,.85), rgba(253,5,212,.5));}
+
+  /* ============ SCHRITTE · redaktionelle Nummernliste ============ */
+  .step{
+    display:grid;
+    grid-template-columns:62px 1fr;
+    gap:20px;
+    margin-bottom:0;
+    padding:22px 0;
+    border-bottom:1px solid var(--hair);
+    align-items:start;
+  }
+  .step-num{
+    font-family:var(--font-display);
+    font-weight:900;
+    font-style:italic;
+    font-size:2.3rem;
+    line-height:1;
+    color:transparent;
+    -webkit-text-stroke:1.3px var(--magenta);
+    background:none;
+    border:none;
+    border-radius:0;
+    width:auto;
+    height:auto;
+    display:block;
+  }
+  .step-body h4{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:1.02rem;
+    letter-spacing:.01em;
+    color:var(--text);
+    margin:2px 0 8px;
+  }
+  .step-body p{margin:0;}
+
+  /* ============ PROMPT-BOXEN ============ */
+  .codeblock{
+    position:relative;
+    background:#050507;
+    border:1px solid var(--border);
+    border-radius:0;
+    margin:14px 0 6px;
+    overflow:hidden;
+  }
+  .codeblock.scrollable pre{
+    max-height:min(420px, 55vh);
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;   /* Wischen im Prompt scrollt nicht die Seite mit */
+  }
+  .codeblock.scrollable::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:34px;
+    background:linear-gradient(to bottom, transparent, #050507);
+    pointer-events:none;
+  }
+  .codeblock-label{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:14px;
+    padding:11px 14px;
+    border-bottom:1px solid var(--magenta);
+    background:#000;
+  }
+  .codeblock-label span{
+    font-family:var(--font-mono);
+    font-size:.66rem;
+    color:var(--magenta);
+    text-transform:uppercase;
+    letter-spacing:.18em;
+  }
+  .codeblock pre::-webkit-scrollbar{width:9px;}
+  .codeblock pre::-webkit-scrollbar-track{background:#0d0d11;}
+  .codeblock pre::-webkit-scrollbar-thumb{background:var(--border);}
+  .codeblock pre::-webkit-scrollbar-thumb:hover{background:var(--magenta);}
+  .codeblock pre{
+    margin:0;
+    padding:20px 100px 20px 20px;
+    font-family:var(--font-mono);
+    font-size:.84rem;
+    line-height:1.65;
+    color:#d9d8e2;
+    white-space:pre-wrap;
+    word-break:break-word;
+  }
+  .copy-btn{
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:var(--magenta);
+    border:1px solid var(--magenta);
+    color:#000;
+    font-family:var(--font-body);
+    font-size:.66rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    padding:8px 14px;
+    border-radius:0;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background .15s, color .15s, box-shadow .15s;
+  }
+  .copy-btn:hover{background:#fff; border-color:#fff; color:#000; box-shadow:var(--glow);}
+  .copy-btn.copied{background:#fff; border-color:#fff; color:#000;}
+
+  /* ============ CALLOUTS · handschriftliche Randnotiz ============ */
+  .callout{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-left:4px solid var(--magenta);
+    border-radius:0;
+    padding:20px 24px;
+    margin:26px 0;
+  }
+  .callout.coral{border-left-color:var(--coral);}
+  .callout h4{
+    font-family:var(--font-marker);
+    font-size:1.2rem;
+    font-weight:700;
+    text-transform:none;
+    letter-spacing:0;
+    color:var(--magenta-soft);
+    margin:0 0 10px;
+  }
+  .callout.coral h4{color:var(--coral);}
+  .callout ul{margin:0; padding-left:20px; color:var(--text-dim);}
+  .callout li{margin-bottom:8px; font-size:.92rem;}
+  .callout li::marker{color:var(--magenta);}
+  .callout li:last-child{margin-bottom:0;}
+
+  /* ============ CHECKLISTE ============ */
+  .checklist{list-style:none; padding:0; margin:20px 0;}
+  .checklist li{
+    display:flex;
+    gap:14px;
+    padding:13px 0;
+    border-bottom:1px solid var(--hair);
+    font-size:.93rem;
+    color:var(--text-dim);
+  }
+  .checklist li:last-child{border-bottom:none;}
+  .checklist .mark{
+    color:var(--magenta);
+    font-family:var(--font-body);
+    font-weight:700;
+    flex-shrink:0;
+    text-shadow:var(--glow);
+  }
+
+  /* ============ TABS (Teil A/B/C) ============ */
+  .subnav{
+    display:flex;
+    gap:0;
+    margin:44px 0 4px;
+    border-bottom:1px solid var(--hair);
+    flex-wrap:wrap;
+  }
+  .subnav button{
+    background:none;
+    border:none;
+    color:var(--text-faint);
+    font-family:var(--font-body);
+    font-size:.72rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    padding:14px 2px;
+    margin-right:30px;
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+    transition:color .18s, border-color .18s;
+  }
+  .subnav button:hover{color:var(--text);}
+  .subnav button.active{color:var(--magenta); border-color:var(--magenta);}
+  .subpanel{display:none;}
+  .subpanel.active{display:block; padding-top:26px; animation:fade .3s ease;}
+
+  /* ============ FAQ ============ */
+  .faq-item{border-bottom:1px solid var(--hair);}
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    color:var(--text);
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.1rem;
+    line-height:1.3;
+    padding:20px 0;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:18px;
+    transition:color .18s;
+  }
+  .faq-q:hover{color:var(--magenta-soft);}
+  .faq-q .plus{
+    font-family:var(--font-marker);
+    color:var(--magenta);
+    font-size:1.7rem;
+    line-height:1;
+    flex-shrink:0;
+    transition:transform .25s;
+  }
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .faq-a p{padding-bottom:20px; margin:0; max-width:62ch;}
+  .faq-item.open .faq-a{max-height:420px;}
+
+  /* ============ DOWNLOADS ============ */
+  .dl-card{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:0;
+    padding:30px 28px 28px;
+    margin-bottom:20px;
+  }
+  .dl-card::before{
+    content:"";
+    position:absolute;
+    top:-11px; right:28px;
+    width:74px; height:21px;
+    background:linear-gradient(102deg, rgba(253,5,212,.9), rgba(255,92,224,.55));
+    clip-path:polygon(2% 10%, 98% 0%, 100% 90%, 0% 100%);
+    transform:rotate(5deg);
+  }
+  .dl-card h3{margin-top:0;}
+  .dl-btn{
+    display:inline-block;
+    background:var(--magenta);
+    color:#000;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size:.74rem;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    padding:13px 24px;
+    border-radius:0;
+    text-decoration:none;
+    margin-top:16px;
+    border:1px solid var(--magenta);
+    cursor:pointer;
+    box-shadow:0 0 28px rgba(253,5,212,.32);
+    transition:background .15s, color .15s, border-color .15s, transform .15s;
+  }
+  .dl-btn:hover{background:#fff; border-color:#fff; transform:translateY(-2px);}
+  .week-list{list-style:none; padding:0; margin:18px 0;}
+  .week-list li{
+    display:flex;
+    gap:14px;
+    align-items:baseline;
+    padding:11px 0;
+    font-size:.91rem;
+    color:var(--text-dim);
+    border-bottom:1px solid var(--hair);
+  }
+  .week-list li:last-child{border-bottom:none;}
+  .week-list .day{
+    font-family:var(--font-mono);
+    color:var(--magenta);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    min-width:52px;
+  }
+
+  /* ============ SEITENNAVIGATION ============ */
+  .page-nav{
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    margin-top:68px;
+    padding-top:28px;
+    border-top:1px solid var(--hair);
+  }
+  .page-nav button{
+    background:none;
+    border:1px solid var(--border);
+    color:var(--text-faint);
+    font-family:var(--font-body);
+    font-size:.7rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    padding:14px 20px;
+    border-radius:0;
+    cursor:pointer;
+    transition:border-color .18s, color .18s, background .18s;
+  }
+  .page-nav button:hover{border-color:var(--magenta); color:#000; background:var(--magenta);}
+
+  .hamburger{display:none;}
+
+  /* ============ INFO-KARTEN, RASTER, ZUTATEN, BAUKASTEN ============ */
+  .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:22px 0;}
+  .info-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:0;
+    padding:22px;
+    transition:border-color .18s, transform .18s;
+  }
+  .info-card:hover{border-color:var(--magenta); transform:translateY(-2px);}
+  .info-card .ic-num{
+    font-family:var(--font-mono);
+    font-size:.64rem;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    color:var(--magenta);
+    display:block;
+    margin-bottom:10px;
+  }
+  .info-card .ic-icon{font-size:1.5rem; display:block; margin-bottom:10px; line-height:1; color:var(--magenta);}
+  .info-card h4{
+    margin:0 0 8px;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.05rem;
+    line-height:1.2;
+    color:var(--text);
+  }
+  .info-card p{margin:0; font-size:.85rem; color:var(--text-faint); line-height:1.6;}
+
+  .grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--hair);
+    border:1px solid var(--hair);
+    border-radius:0;
+    overflow:hidden;
+    margin:22px 0;
+  }
+  .fw-card{background:var(--surface); padding:24px 18px;}
+  .fw-card .fw-num{
+    font-family:var(--font-mono);
+    font-size:.62rem;
+    color:var(--text-faint);
+    letter-spacing:.2em;
+    text-transform:uppercase;
+  }
+  .fw-card h4{
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:-.01em;
+    margin:10px 0 8px;
+    color:var(--magenta);
+    text-shadow:var(--glow);
+  }
+  .fw-card p{margin:0; font-size:.81rem; color:var(--text-faint); line-height:1.6;}
+
+  .zutat-detail{
+    border:1px solid var(--border);
+    border-radius:0;
+    padding:18px 20px;
+    background:var(--surface);
+    margin-bottom:12px;
+    transition:border-color .18s;
+  }
+  .zutat-detail[open]{border-color:var(--magenta);}
+  .zutat-detail summary{
+    cursor:pointer;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:.95rem;
+    color:var(--text);
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .zutat-detail summary::-webkit-details-marker{display:none;}
+  .zutat-detail summary::before{
+    content:"+";
+    font-family:var(--font-marker);
+    color:var(--magenta);
+    font-size:1.5rem;
+    line-height:1;
+  }
+  .zutat-detail[open] summary::before{content:"–";}
+
+  /* Aufgeklappter Kasten, der standardmaessig offen steht: Die Zeile zum
+     Zuklappen und die zum Wiederaufklappen wechseln sich ab. */
+  .zutat-detail .label-zu{display:inline;}
+  .zutat-detail .label-offen{display:none;}
+  .zutat-detail[open] .label-zu{display:none;}
+  .zutat-detail[open] .label-offen{display:inline;}
+  .zutat-detail.wichtig{border-color:var(--magenta); background:var(--surface-2);}
+  .zutat-detail.wichtig summary{color:var(--magenta-soft);}
+  .zutat-detail .zt-letter{
+    font-family:var(--font-display);
+    font-style:italic;
+    color:var(--magenta);
+    font-weight:900;
+    font-size:1.25rem;
+  }
+  .zutat-detail p{margin:12px 0 0; font-size:.87rem; color:var(--text-faint);}
+  .zutat-detail pre{
+    margin:12px 0 0;
+    background:#050507;
+    border:1px solid var(--border);
+    border-left:3px solid var(--magenta);
+    border-radius:0;
+    padding:14px 16px;
+    font-family:var(--font-mono);
+    font-size:.78rem;
+    line-height:1.65;
+    color:#d9d8e2;
+    white-space:pre-wrap;
+  }
+
+  .bk-box{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-top:3px solid var(--magenta);
+    border-radius:0;
+    padding:28px;
+    margin:26px 0;
+  }
+  .bk-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:20px; flex-wrap:wrap; gap:10px;}
+  .bk-head h4{
+    margin:0;
+    font-family:var(--font-display);
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:1.25rem;
+    letter-spacing:-.02em;
+  }
+  .bk-head span{font-family:var(--font-marker); font-size:1.05rem; color:var(--magenta-soft);}
+  .bk-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  .bk-field{display:flex; flex-direction:column; gap:8px;}
+  .bk-field label{
+    font-family:var(--font-mono);
+    font-size:.63rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:var(--magenta);
+  }
+  .bk-field select, .bk-field input[type="text"]{
+    font-family:var(--font-body);
+    font-size:1rem;              /* nicht kleiner: sonst zoomt iPadOS beim Antippen */
+    line-height:1.3;
+    padding:14px 16px;
+    min-height:52px;             /* komfortable Trefferflaeche fuer den Finger */
+    border-radius:0;
+    border:1px solid var(--border);
+    background-color:var(--bg);
+    color:var(--text);
+    transition:border-color .18s;
+  }
+  /* eigener Magenta-Pfeil, damit das Menue auf Tablets sichtbar aufklappbar wirkt */
+  .bk-field select{
+    appearance:none;
+    -webkit-appearance:none;
+    padding-right:46px;
+    cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5L7 7.5L13 1.5' fill='none' stroke='%23fd05d4' stroke-width='2.2' stroke-linecap='square'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 16px center;
+    background-size:14px 9px;
+  }
+  .bk-field select:hover, .bk-field input[type="text"]:hover{border-color:var(--hair);}
+  .bk-field select:focus, .bk-field input:focus{outline:2px solid var(--magenta); outline-offset:1px;}
+  .bk-field select:focus{border-color:var(--magenta);}
+  .bk-field option{background:#101014; color:var(--text);}
+  .bk-chips{display:flex; flex-wrap:wrap; gap:9px; margin:8px 0 18px;}
+  .bk-chip{
+    font-family:var(--font-body);
+    font-size:.78rem;
+    font-weight:500;
+    padding:8px 15px;
+    border-radius:100px;
+    border:1px solid var(--border);
+    background:var(--bg);
+    color:var(--text-dim);
+    cursor:pointer;
+    user-select:none;
+    transition:all .16s;
+  }
+  .bk-chip:hover{border-color:var(--magenta-soft); color:var(--text);}
+  .bk-chip.active{
+    background:var(--magenta);
+    border-color:var(--magenta);
+    color:#000;
+    font-weight:700;
+    box-shadow:0 0 18px rgba(253,5,212,.4);
+  }
+  .bk-output{
+    background:#050507;
+    border:1px solid var(--border);
+    border-left:3px solid var(--magenta);
+    border-radius:0;
+    padding:18px 20px;
+    font-family:var(--font-mono);
+    font-size:.8rem;
+    line-height:1.7;
+    color:#d9d8e2;
+    white-space:pre-wrap;
+    min-height:56px;
+  }
+  .bk-actions{display:flex; justify-content:flex-end; margin-top:14px;}
+  .bk-actions .copy-btn{position:static;}
+
+  .grid-2.cols-4{grid-template-columns:repeat(4, 1fr);}
+
+  /* =========================================================
+     RESPONSIVE  ·  vier Stufen
+       > 1240px   Desktop, volle Seitenleiste
+       <= 1240px  Tablet quer / kleines Notebook
+       <= 1024px  Tablet hoch: Seitenleiste wird zur Schublade
+       <= 640px   Smartphone
+     ========================================================= */
+
+  /* ---------- Tablet quer / kleines Notebook ---------- */
+  @media (max-width: 1240px){
+    .app{grid-template-columns:236px 1fr;}
+    .sidebar{padding:28px 18px 24px;}
+    .brand{font-size:1.8rem;}
+    .content{padding:52px 44px 110px;}
+    .grid-4{grid-template-columns:repeat(2, 1fr);}
+    .grid-2.cols-4{grid-template-columns:repeat(3, 1fr);}
+    .card-grid{gap:16px;}
+  }
+
+  /* ---------- Tablet hoch (iPad & Co.) ---------- */
+  @media (max-width: 1024px){
+    .app{grid-template-columns:1fr;}
+
+    /* Seitenleiste als Schublade, aber unter der Kopfzeile:
+       so bleibt der Menue-Knopf zum Schliessen jederzeit erreichbar */
+    .sidebar{
+      position:fixed;
+      inset:0 auto 0 0;
+      width:min(330px, 82vw);
+      z-index:20;
+      padding:96px 24px 32px;
+      transform:translateX(-100%);
+      transition:transform .25s ease;
+      box-shadow:0 0 60px rgba(0,0,0,.75);
+      background:#08080a;
+      border-right:1px solid var(--magenta);
+    }
+    .sidebar.open{transform:translateX(0);}
+
+    .hamburger{
+      display:flex;
+      position:sticky;
+      top:0;
+      z-index:30;              /* liegt ueber der Schublade */
+      background:rgba(8,8,10,.97);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--magenta);
+      padding:14px 22px;
+      align-items:center;
+      gap:16px;
+    }
+    .hamburger button{
+      background:none;
+      border:1px solid var(--magenta);
+      color:var(--magenta);
+      width:48px;
+      height:48px;
+      flex:none;
+      border-radius:0;
+      cursor:pointer;
+      font-size:1.25rem;
+      line-height:1;
+    }
+    .hamburger button:active{background:var(--magenta); color:#000;}
+    .hamburger .h-title{
+      font-family:var(--font-display);
+      font-style:italic;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:-.02em;
+      font-size:1.3rem;
+    }
+
+    .content{padding:40px 40px 110px; max-width:920px; width:100%; margin:0 auto;}
+    .card-grid{grid-template-columns:repeat(2, 1fr); gap:20px;}
+    .grid-2.cols-4{grid-template-columns:repeat(3, 1fr);}
+    .bk-grid{grid-template-columns:1fr;}
+
+    /* Lesbarkeit auf Armlaenge Abstand */
+    body{font-size:1.02rem;}
+    .lede{font-size:1.28rem; max-width:none;}
+    p{max-width:70ch;}
+    .codeblock pre{font-size:.92rem; line-height:1.7;}
+    .codeblock.scrollable pre{max-height:min(480px, 50vh);}
+    .bk-output{font-size:.9rem;}
+    .zutat-detail pre{font-size:.86rem;}
+    .info-card p, .fw-card p, .level-card p{font-size:.92rem;}
+    .callout li, .checklist li, .week-list li{font-size:1rem;}
+    .faq-item.open .faq-a{max-height:640px;}
+  }
+
+  /* ---------- Touch-Bedienung: groessere Trefferflaechen ---------- */
+  @media (hover: none) and (pointer: coarse){
+    .navlink{padding:16px 12px; font-size:.86rem;}
+    .subnav button{padding:18px 4px; font-size:.8rem; margin-right:26px;}
+    .faq-q{padding:24px 0; font-size:1.15rem;}
+    .faq-q .plus{font-size:2rem;}
+    .zutat-detail{padding:14px 20px;}
+    .zutat-detail summary{padding:10px 0; font-size:1rem;}
+    .zutat-detail summary::before{font-size:1.8rem;}
+    .bk-chip{padding:13px 20px; font-size:.9rem;}
+    .page-nav button{padding:18px 24px; font-size:.78rem;}
+    .dl-btn{padding:18px 30px; font-size:.82rem;}
+    .copy-btn{padding:14px 22px; font-size:.76rem;}
+    .codeblock pre{padding-right:132px;}
+    .level-card{padding:34px 24px 24px;}
+
+    /* Hover-Zustaende bleiben auf Touch-Geraeten sonst haengen */
+    .level-card:hover, .info-card:hover{transform:none; box-shadow:none;}
+    .navlink:hover{letter-spacing:.14em;}
+    .copy-btn:hover, .dl-btn:hover{background:var(--magenta); border-color:var(--magenta); color:#000; transform:none; box-shadow:none;}
+    .page-nav button:hover{background:none; color:var(--text-faint); border-color:var(--border);}
+
+    /* stattdessen klare Rueckmeldung beim Antippen */
+    .level-card:active{border-color:var(--magenta); background:var(--surface-2);}
+    .info-card:active{border-color:var(--magenta);}
+    .navlink:active{background:var(--surface-2); color:var(--text);}
+    .copy-btn:active, .dl-btn:active{background:#fff; border-color:#fff; color:#000;}
+    .page-nav button:active{background:var(--magenta); color:#000; border-color:var(--magenta);}
+    .bk-chip:active{border-color:var(--magenta-soft);}
+    .faq-q:active{color:var(--magenta-soft);}
+  }
+
+  /* ---------- Smartphone ---------- */
+  @media (max-width: 640px){
+    .content{padding:34px 22px 90px;}
+    .card-grid{grid-template-columns:1fr;}
+    .grid-2{grid-template-columns:1fr;}
+    .grid-4{grid-template-columns:1fr;}
+    .grid-2.cols-4{grid-template-columns:repeat(2, 1fr);}
+    .step{grid-template-columns:48px 1fr; gap:14px;}
+    .step-num{font-size:1.9rem;}
+    .lede{font-size:1.15rem; padding-left:16px;}
+    .codeblock pre{padding:20px 18px 62px;}
+    .copy-btn{top:auto; bottom:12px; right:12px;}
+    .codeblock-label{flex-wrap:wrap;}
+    .codeblock-label .copy-btn{position:static;}
+    .page-nav{flex-direction:column;}
+    .page-nav button{width:100%;}
+    .subnav button{margin-right:20px;}
+  }
+  @media (max-width: 460px){
+    .grid-2.cols-4{grid-template-columns:1fr;}
+  }
+
+  /* Ergaenzungen fuer die Level-1-Seite */
+  a.brand-link{display:block; color:inherit; text-decoration:none;}
+  a.brand-link:hover .brand-sub{color:var(--text);}
+  .h-title a{color:inherit; text-decoration:none;}
+  .legal{
+    margin-top:64px; padding-top:20px; border-top:1px solid var(--border);
+    font-family:var(--font-mono); font-size:.75rem; letter-spacing:.06em; color:var(--text-faint);
+    display:flex; flex-wrap:wrap; gap:8px 20px;
+  }
+  .legal a{color:var(--text-dim); text-decoration:underline; text-underline-offset:3px;}
+  .legal a:hover{color:var(--magenta);}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand-link" href="/" aria-label="Zur Startseite von Level Up, Ladies!">
+      <div class="brand">Level up, <span>Ladies!</span></div>
+      <div class="brand-sub">KI-Power für Frauen in Job, Business und Alltag</div>
+    </a>
+
+    <div class="nav-group-label">Übersicht</div>
+    <button class="navlink active" data-page="start"><span class="tag">＃</span> Start</button>
+
+    <div class="nav-group-label">Level</div>
+    <button class="navlink" data-page="level1"><span class="tag">01</span> Setup</button>
+
+    <div class="nav-group-label">Weiteres</div>
+    <button class="navlink" data-page="faq"><span class="tag">?</span> FAQ</button>
+  </aside>
+
+  <div style="display:flex; flex-direction:column; width:100%;">
+
+    <div class="hamburger">
+      <button id="menuToggle" aria-label="Menü öffnen">☰</button>
+      <div class="h-title"><a href="/">Level up, Ladies!</a></div>
+    </div>
+
+    <main class="content">
+
+      <!-- START -->
+      <section class="page active" id="page-start">
+        <div class="eyebrow"><span class="num">#</span> Start</div>
+        <h1>KI für Job, Business und Alltag: Schritt für Schritt</h1>
+        <p class="lede">Diese Seite führt dich durch Level 1: Du richtest dein Profil ein, damit Claude dich in jedem Chat kennt. Jeder Schritt ist einzeln erklärt, mit dem Prompt zum Kopieren.</p>
+
+        <div class="hint">Am besten öffnest du diese Seite in einem zweiten Tab neben Claude.</div>
+
+        <div class="card-grid">
+          <button class="level-card" data-page="level1">
+            <div class="lc-num">01 · Setup</div>
+            <h3>Claude kennt dich</h3>
+            <p>Persönliche Präferenzen einrichten.</p>
+          </button>
+        </div>
+
+        <h2>Für wen das hier ist</h2>
+        <div class="grid-2">
+          <div class="info-card">
+            <span class="ic-num">01</span>
+            <h4>Die Einsteigerin</h4>
+            <p>Du hast von KI gehört und hier und da etwas ausprobiert. Richtig angekommen ist es nie. Hier fängst du bei null an.</p>
+          </div>
+          <div class="info-card">
+            <span class="ic-num">02</span>
+            <h4>Die Gelegenheits-Nutzerin</h4>
+            <p>Du chattest ab und zu, tippst jedes Mal alles neu und bekommst mal Gold, mal Grütze. Hier lernst du, warum.</p>
+          </div>
+          <div class="info-card">
+            <span class="ic-num">03</span>
+            <h4>Die Systematikerin</h4>
+            <p>Du nutzt KI regelmäßig und willst raus aus dem Zufall: feste Setups, wiederverwendbare Prompts, ein verlässlicher Ablauf.</p>
+          </div>
+          <div class="info-card">
+            <span class="ic-num">04</span>
+            <h4>Egal welche Branche</h4>
+            <p>Angestellt, selbstständig, im Wiedereinstieg oder mitten in der Neuorientierung. Du brauchst nur eine Aufgabe, die dich regelmäßig Zeit kostet.</p>
+          </div>
+        </div>
+
+        <h2>Wie du vorgehst</h2>
+        <p>Geh die sechs Schritte aus Level 1 der Reihe nach durch. Am Ende kennt Claude dich in jedem Chat.</p>
+      </section>
+
+      <!-- LEVEL 1 -->
+      <section class="page" id="page-level1">
+        <div class="eyebrow"><span class="num">01</span> Level 1 · Setup</div>
+        <h1>Persönliche Präferenzen einrichten</h1>
+        <p class="lede">Du hinterlegst einmal, wer du bist und wie du arbeitest. Ab dann berücksichtigt Claude das in jedem Chat, ohne dass du es erneut erklären musst.</p>
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Claude öffnen</h4>
+            <p>Öffne einen neuen Chat auf claude.ai.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Fragebogen-Prompt kopieren</h4>
+            <p>Kopiere den folgenden Text vollständig und füge ihn in den Chat ein. Der Kasten lässt sich durchscrollen.</p>
+            <div class="codeblock scrollable">
+              <div class="codeblock-label">
+                <span>Fragebogen-Prompt · Setup-Assistent</span>
+                <button class="copy-btn" data-copy="prompt-fragebogen" style="position:static;">Kopieren</button>
+              </div>
+              <pre id="prompt-fragebogen">Du bist mein Setup-Assistent für Claude. Hilf mir, meine persönlichen Präferenzen zu schreiben. Das ist ein kurzer Text, den ich in den Einstellungen von Claude hinterlege, damit du mich in jedem Chat kennst.
+
+Ablauf:
+Stell mir nacheinander vier Fragen. Immer nur eine Frage pro Nachricht. Warte auf meine Antwort, bevor du die nächste stellst. Gib zu jeder Frage zwei kurze Beispiele, damit ich weiß, was gemeint ist. Fang direkt mit Frage 1 an.
+
+1. Was machst du beruflich oder privat, und wofür willst du Claude vor allem nutzen?
+2. Wie soll Claude mit dir sprechen? Zum Beispiel kurz oder ausführlich, locker oder sachlich, und soll Claude dir widersprechen, wenn deine Idee Schwächen hat?
+3. Woran arbeitest du gerade, und wobei soll Claude dir in den nächsten Monaten helfen?
+4. Was soll Claude auf keinen Fall tun? Zum Beispiel Floskeln, übertriebenes Lob oder sehr lange Antworten.
+
+Danach:
+Schreib aus meinen Antworten einen fertigen Text mit vier Abschnitten: Identität, Kommunikation, Ziele, Vermeidungen. Identität und Ziele in der Ich-Form, Kommunikation und Vermeidungen als direkte Anweisung an Claude. Fließtext statt Listen, insgesamt unter 300 Wörter. Übersetze meine Antworten in klare Regeln, statt sie wörtlich zu übernehmen. Erfinde nichts dazu.
+
+Nimm in die Vermeidungen immer diesen Satz auf: "Erfinde keine Informationen, Studien oder Zitate. Wenn du unsicher bist, sag es offen."
+
+Gib den fertigen Text in einem Codeblock aus, damit ich ihn mit einem Klick kopieren kann. Kein Kommentar danach.</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Fragen beantworten</h4>
+            <p>Claude stellt dir nacheinander vier Fragen. Beantworte sie konkret.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Ergebnis kopieren</h4>
+            <p>Nach der letzten Frage erstellt Claude einen Codeblock mit deinem fertigen Präferenz-Text. Kopiere den Text vollständig.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>In den Einstellungen einfügen</h4>
+            <p>Profilbild (unten links) → Einstellungen → Profil → Feld „Persönliche Präferenzen". Füge den Text dort ein.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Speichern</h4>
+            <p>Speichern. Ab jetzt berücksichtigt Claude diese Angaben in jedem Chat.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h4>Pro Tipps</h4>
+          <ul>
+            <li>Du kannst diese Einstellung jederzeit anpassen und erweitern. Je mehr Claude über dich weiß, desto besser werden die Ergebnisse.</li>
+            <li>Formuliere die Präferenzen nicht zu spezifisch, wenn du mehrere Rollen hast, etwa Job und eigenes Business nebenher.</li>
+            <li>Für Privates, das nichts mit deiner Arbeit zu tun hat: Inkognito Chat verwenden. Dort gelten die Präferenzen nicht.</li>
+          </ul>
+        </div>
+
+        <div class="page-nav">
+          <button data-page="start">← Start</button>
+          <button data-page="faq">Häufige Fragen →</button>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="page" id="page-faq">
+        <div class="eyebrow"><span class="num">?</span> FAQ</div>
+        <h1>Häufige Fragen</h1>
+
+        <div class="faq-item">
+          <button class="faq-q">Claude gibt bei unterschiedlichen Anfragen ähnliche Antworten.<span class="plus">+</span></button>
+          <div class="faq-a"><p>Meist ist die Anfrage zu offen formuliert. Mehr Kontext liefert präzisere Ergebnisse. Statt „Schreib mir einen Post" besser: „Post zu meinem neuen Coaching-Angebot, Zielgruppe Frauen im Jobwechsel, Ton persönlich, maximal 900 Zeichen, mit Call-to-Action."</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Ich arbeite angestellt und selbstständig. Wie trenne ich das?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Beide Rollen gehören ins Profil, aber allgemein gehalten.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Darf ich Claude im Job überhaupt nutzen?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Das hängt von deinem Arbeitgeber ab. Kläre vorher, welche Tools erlaubt sind und welche Daten das Haus nicht verlassen dürfen. Für private Projekte und dein eigenes Business entscheidest du selbst.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Was ist der Inkognito Chat?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Ein Chat-Modus ohne die hinterlegten Präferenzen. Sinnvoll für Themen, die nichts mit deiner beruflichen Nutzung zu tun haben.</p></div>
+        </div>
+
+        <div class="page-nav">
+          <button data-page="level1">← Level 1</button>
+          <button data-page="start">Zurück zum Start</button>
+        </div>
+      </section>
+
+      <footer class="legal">
+        <a href="/">levelupladies.de</a>
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  const pages = document.querySelectorAll('.page');
+  const navlinks = document.querySelectorAll('.navlink');
+  const cardlinks = document.querySelectorAll('[data-page]');
+  const sidebar = document.getElementById('sidebar');
+  const menuToggle = document.getElementById('menuToggle');
+
+  function showPage(id){
+    pages.forEach(p => p.classList.toggle('active', p.id === 'page-'+id));
+    navlinks.forEach(n => n.classList.toggle('active', n.dataset.page === id));
+    document.querySelector('.content').scrollTo({top:0, behavior:'instant'});
+    window.scrollTo({top:0, behavior:'instant'});
+    sidebar.classList.remove('open');
+  }
+
+  cardlinks.forEach(el => {
+    el.addEventListener('click', () => showPage(el.dataset.page));
+  });
+
+  menuToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+
+  // Kopieren-Button
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = document.getElementById(btn.dataset.copy).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Kopiert';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+      }).catch(() => {
+        btn.textContent = 'Bitte von Hand markieren';
+      });
+    });
+  });
+
+  // FAQ aufklappen
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+</script>
+</body></html>
