@@ -1022,83 +1022,46 @@
   }
   .legal a{color:var(--text-dim); text-decoration:underline; text-underline-offset:3px;}
   .legal a:hover{color:var(--magenta);}
+
+  /* One-Pager: keine Seitenleiste, Kopfzeile oben */
+  .app{display:block;}
+  .topbar{
+    border-bottom:1px solid var(--magenta);
+    background:rgba(8,8,10,.97);
+    padding:18px 0 16px;
+  }
+  /* gleiche Seitenabstaende wie .content, damit Kopfzeile und Inhalt buendig sind */
+  .topbar-inner{max-width:920px; margin:0 auto; padding:0 72px;}
+  @media (max-width: 1240px){ .topbar-inner{padding:0 44px;} }
+  @media (max-width: 1024px){ .topbar-inner{padding:0 40px;} }
+  .topbar a{display:inline-block; color:inherit; text-decoration:none;}
+  .topbar .brand{font-size:1.7rem; margin-bottom:6px;}
+  .topbar .brand-sub{margin-bottom:0;}
+  .topbar a:hover .brand-sub{color:var(--text);}
+  .content{max-width:920px; width:100%; margin:0 auto;}
+  @media (max-width: 640px){
+    .topbar-inner{padding:0 22px;}
+    .topbar .brand{font-size:1.45rem;}
+  }
 </style>
 </head>
 <body>
 
 <div class="app">
 
-  <aside class="sidebar" id="sidebar">
-    <a class="brand-link" href="/" aria-label="Zur Startseite von Level Up, Ladies!">
-      <div class="brand">Level up, <span>Ladies!</span></div>
-      <div class="brand-sub">KI-Power für Frauen in Job, Business und Alltag</div>
-    </a>
-
-    <div class="nav-group-label">Übersicht</div>
-    <button class="navlink active" data-page="start"><span class="tag">＃</span> Start</button>
-
-    <div class="nav-group-label">Level</div>
-    <button class="navlink" data-page="level1"><span class="tag">01</span> Setup</button>
-
-    <div class="nav-group-label">Weiteres</div>
-    <button class="navlink" data-page="faq"><span class="tag">?</span> FAQ</button>
-  </aside>
-
-  <div style="display:flex; flex-direction:column; width:100%;">
-
-    <div class="hamburger">
-      <button id="menuToggle" aria-label="Menü öffnen">☰</button>
-      <div class="h-title"><a href="/">Level up, Ladies!</a></div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" aria-label="Zur Startseite von Level Up, Ladies!">
+        <div class="brand">Level up, <span>Ladies!</span></div>
+        <div class="brand-sub">KI-Power für Frauen in Job, Business und Alltag</div>
+      </a>
     </div>
+  </header>
 
-    <main class="content">
-
-      <!-- START -->
-      <section class="page active" id="page-start">
-        <div class="eyebrow"><span class="num">#</span> Start</div>
-        <h1>KI für Job, Business und Alltag: Schritt für Schritt</h1>
-        <p class="lede">Diese Seite führt dich durch Level 1: Du richtest dein Profil ein, damit Claude dich in jedem Chat kennt. Jeder Schritt ist einzeln erklärt, mit dem Prompt zum Kopieren.</p>
-
-        <div class="hint">Am besten öffnest du diese Seite in einem zweiten Tab neben Claude.</div>
-
-        <div class="card-grid">
-          <button class="level-card" data-page="level1">
-            <div class="lc-num">01 · Setup</div>
-            <h3>Claude kennt dich</h3>
-            <p>Persönliche Präferenzen einrichten.</p>
-          </button>
-        </div>
-
-        <h2>Für wen das hier ist</h2>
-        <div class="grid-2">
-          <div class="info-card">
-            <span class="ic-num">01</span>
-            <h4>Die Einsteigerin</h4>
-            <p>Du hast von KI gehört und hier und da etwas ausprobiert. Richtig angekommen ist es nie. Hier fängst du bei null an.</p>
-          </div>
-          <div class="info-card">
-            <span class="ic-num">02</span>
-            <h4>Die Gelegenheits-Nutzerin</h4>
-            <p>Du chattest ab und zu, tippst jedes Mal alles neu und bekommst mal Gold, mal Grütze. Hier lernst du, warum.</p>
-          </div>
-          <div class="info-card">
-            <span class="ic-num">03</span>
-            <h4>Die Systematikerin</h4>
-            <p>Du nutzt KI regelmäßig und willst raus aus dem Zufall: feste Setups, wiederverwendbare Prompts, ein verlässlicher Ablauf.</p>
-          </div>
-          <div class="info-card">
-            <span class="ic-num">04</span>
-            <h4>Egal welche Branche</h4>
-            <p>Angestellt, selbstständig, im Wiedereinstieg oder mitten in der Neuorientierung. Du brauchst nur eine Aufgabe, die dich regelmäßig Zeit kostet.</p>
-          </div>
-        </div>
-
-        <h2>Wie du vorgehst</h2>
-        <p>Geh die sechs Schritte aus Level 1 der Reihe nach durch. Am Ende kennt Claude dich in jedem Chat.</p>
-      </section>
+  <main class="content">
 
       <!-- LEVEL 1 -->
-      <section class="page" id="page-level1">
+      <section class="page active" id="page-level1">
         <div class="eyebrow"><span class="num">01</span> Level 1 · Setup</div>
         <h1>Persönliche Präferenzen einrichten</h1>
         <p class="lede">Du hinterlegst einmal, wer du bist und wie du arbeitest. Ab dann berücksichtigt Claude das in jedem Chat, ohne dass du es erneut erklären musst.</p>
@@ -1161,7 +1124,7 @@ Gib den fertigen Text in einem Codeblock aus, damit ich ihn mit einem Klick kopi
           <div class="step-num">5</div>
           <div class="step-body">
             <h4>In den Einstellungen einfügen</h4>
-            <p>Profilbild (unten links) → Einstellungen → Profil → Feld „Persönliche Präferenzen". Füge den Text dort ein.</p>
+            <p>Profilbild (unten links) → Einstellungen → Feld „Anweisungen für Claude". Füge den Text dort ein.</p>
           </div>
         </div>
 
@@ -1181,72 +1144,18 @@ Gib den fertigen Text in einem Codeblock aus, damit ich ihn mit einem Klick kopi
             <li>Für Privates, das nichts mit deiner Arbeit zu tun hat: Inkognito Chat verwenden. Dort gelten die Präferenzen nicht.</li>
           </ul>
         </div>
-
-        <div class="page-nav">
-          <button data-page="start">← Start</button>
-          <button data-page="faq">Häufige Fragen →</button>
-        </div>
       </section>
 
-      <!-- FAQ -->
-      <section class="page" id="page-faq">
-        <div class="eyebrow"><span class="num">?</span> FAQ</div>
-        <h1>Häufige Fragen</h1>
+    <footer class="legal">
+      <a href="/">levelupladies.de</a>
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+    </footer>
 
-        <div class="faq-item">
-          <button class="faq-q">Claude gibt bei unterschiedlichen Anfragen ähnliche Antworten.<span class="plus">+</span></button>
-          <div class="faq-a"><p>Meist ist die Anfrage zu offen formuliert. Mehr Kontext liefert präzisere Ergebnisse. Statt „Schreib mir einen Post" besser: „Post zu meinem neuen Coaching-Angebot, Zielgruppe Frauen im Jobwechsel, Ton persönlich, maximal 900 Zeichen, mit Call-to-Action."</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Ich arbeite angestellt und selbstständig. Wie trenne ich das?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Beide Rollen gehören ins Profil, aber allgemein gehalten.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Darf ich Claude im Job überhaupt nutzen?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Das hängt von deinem Arbeitgeber ab. Kläre vorher, welche Tools erlaubt sind und welche Daten das Haus nicht verlassen dürfen. Für private Projekte und dein eigenes Business entscheidest du selbst.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Was ist der Inkognito Chat?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Ein Chat-Modus ohne die hinterlegten Präferenzen. Sinnvoll für Themen, die nichts mit deiner beruflichen Nutzung zu tun haben.</p></div>
-        </div>
-
-        <div class="page-nav">
-          <button data-page="level1">← Level 1</button>
-          <button data-page="start">Zurück zum Start</button>
-        </div>
-      </section>
-
-      <footer class="legal">
-        <a href="/">levelupladies.de</a>
-        <a href="/impressum/">Impressum</a>
-        <a href="/datenschutz/">Datenschutz</a>
-      </footer>
-
-    </main>
-  </div>
+  </main>
 </div>
 
 <script>
-  const pages = document.querySelectorAll('.page');
-  const navlinks = document.querySelectorAll('.navlink');
-  const cardlinks = document.querySelectorAll('[data-page]');
-  const sidebar = document.getElementById('sidebar');
-  const menuToggle = document.getElementById('menuToggle');
-
-  function showPage(id){
-    pages.forEach(p => p.classList.toggle('active', p.id === 'page-'+id));
-    navlinks.forEach(n => n.classList.toggle('active', n.dataset.page === id));
-    document.querySelector('.content').scrollTo({top:0, behavior:'instant'});
-    window.scrollTo({top:0, behavior:'instant'});
-    sidebar.classList.remove('open');
-  }
-
-  cardlinks.forEach(el => {
-    el.addEventListener('click', () => showPage(el.dataset.page));
-  });
-
-  menuToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
-
   // Kopieren-Button
   document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1259,13 +1168,6 @@ Gib den fertigen Text in einem Codeblock aus, damit ich ihn mit einem Klick kopi
       }).catch(() => {
         btn.textContent = 'Bitte von Hand markieren';
       });
-    });
-  });
-
-  // FAQ aufklappen
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.querySelector('.faq-q').addEventListener('click', () => {
-      item.classList.toggle('open');
     });
   });
 </script>
