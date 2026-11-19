@@ -37,7 +37,7 @@ export const datenschutz = {
     },
     {
       titel: "Kontaktaufnahme per E-Mail",
-      text: "Wenn du uns schreibst — etwa über die Anmelde-Schaltflächen, die eine vorbereitete E-Mail öffnen — verarbeiten wir deine Angaben ausschließlich, um dein Anliegen zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen) beziehungsweise lit. f DSGVO. Wir löschen die Nachrichten, sobald sie nicht mehr benötigt werden und keine gesetzlichen Aufbewahrungsfristen entgegenstehen.",
+      text: "Wenn du uns schreibst — etwa über die Anmelde-Schaltflächen, die eine vorbereitete E-Mail öffnen — verarbeiten wir deine Angaben ausschließlich, um dein Anliegen zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen) beziehungsweise lit. f DSGVO. Wir löschen die Nachrichten, sobald sie nicht mehr benötigt werden und keine gesetzlichen Aufbewahrungsfristen entgegenstehen. Unsere E-Mails laufen über Google Workspace, einen Dienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Google verarbeitet deine Nachricht in unserem Auftrag auf Grundlage eines Auftragsverarbeitungsvertrags. Zur möglichen Übermittlung in die USA siehe den Abschnitt „Übermittlung in Drittländer“.",
     },
     {
       titel: "Anmeldung zum Workshop",
@@ -73,7 +73,7 @@ export const datenschutz = {
     },
     {
       titel: "Übermittlung in Drittländer",
-      text: "Einige der eingesetzten Dienste gehören zu Unternehmen mit Sitz in den USA: GitHub Inc. (Hosting dieser Website), Google (Google Forms einschließlich reCAPTCHA; unser Vertragspartner ist die Google Ireland Limited), Luma Labs, Inc. (Webinar-Anmeldung) und Calendly, LLC (Terminbuchung). Dabei können personenbezogene Daten, etwa deine IP-Adresse, in die USA übermittelt werden. Für die USA gibt es mit dem EU-US Data Privacy Framework einen Angemessenheitsbeschluss der EU-Kommission (Art. 45 DSGVO) für Unternehmen, die nach diesem Rahmen zertifiziert sind. Die Anbieter stützen solche Übermittlungen nach eigenen Angaben auf dieses Framework oder auf Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO). Brevo, unser Dienst für den Mailversand, hat seinen Sitz in der EU.",
+      text: "Einige der eingesetzten Dienste gehören zu Unternehmen mit Sitz in den USA: GitHub Inc. (Hosting dieser Website), Google (Google Forms einschließlich reCAPTCHA sowie Google Workspace für unsere E-Mails; unser Vertragspartner ist die Google Ireland Limited), Luma Labs, Inc. (Webinar-Anmeldung) und Calendly, LLC (Terminbuchung). Dabei können personenbezogene Daten, etwa deine IP-Adresse, in die USA übermittelt werden. Für die USA gibt es mit dem EU-US Data Privacy Framework einen Angemessenheitsbeschluss der EU-Kommission (Art. 45 DSGVO) für Unternehmen, die nach diesem Rahmen zertifiziert sind. Die Anbieter stützen solche Übermittlungen nach eigenen Angaben auf dieses Framework oder auf Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO). Brevo, unser Dienst für den Mailversand, hat seinen Sitz in der EU.",
     },
     {
       titel: "Speicherdauer",

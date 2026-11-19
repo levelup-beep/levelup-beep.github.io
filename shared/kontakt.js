@@ -6,7 +6,12 @@
 //
 // Bleibt der Wert leer, zeigt der Footer stattdessen den Hinweistext unten,
 // ohne Link — so geht nichts Totes live.
-export const kontaktMail = "riesekirch@gmail.com";
+//
+// Seit 19.11.2026: hello@levelupladies.de ist eine Gruppe in Google Workspace
+// (Mareike Kirch Holding GmbH) und leitet an mareike@ und insa@ weiter.
+// Wechselt der Mailanbieter, den Abschnitt "Kontaktaufnahme per E-Mail" im
+// Datenschutz (datenschutz/content.js) mit anpassen.
+export const kontaktMail = "hello@levelupladies.de";
 
 export const kontaktHinweis = "E-Mail folgt in Kürze";
 

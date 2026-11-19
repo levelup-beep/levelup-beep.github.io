@@ -145,11 +145,6 @@ Google Fonts.
 
 - **Ton:** Wie viel Spielsprache bleibt auf den übrigen Seiten (Player 001 auf `/schule/`,
   Loadout, Inventory, Goodiebag)? Für die Startseite ist es entschieden, siehe oben.
-- **Kontakt-Mailadresse:** Künftig `hello@levelupladies.de`. Das Postfach dafür ist noch
-  nicht eingerichtet (die Domain hat noch keine MX-Einträge). Bis es Mails empfängt, bleibt
-  `riesekirch@gmail.com` in `shared/kontakt.js`. Erst umstellen, wenn ein Testmail ankommt,
-  und dann den Abschnitt „Kontaktaufnahme per E-Mail“ im Datenschutz an den Mailanbieter
-  anpassen.
 - **Inhalte aus Mareikes Entwurf** (Repo `level-up-ladies-website`) werden in diese Seite
   übernommen. Was genau, legen Insa und Mareike fest.
 
