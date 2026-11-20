@@ -591,6 +591,8 @@
     clip-path:polygon(2% 10%, 98% 0%, 100% 90%, 0% 100%); transition:transform .25s}
   .tape-link:hover, .tape-link:focus-visible{transform:rotate(-3deg) translateY(-2px) scale(1.05)}
   .tape-link:focus-visible{outline:2px solid var(--white); outline-offset:4px}
+  /* Ab 1. Dezember: geschlossene Türen ohne verschwommenen Titel, nur als Päckchen */
+  .cal.ab-dezember .door.locked .title{filter:none; visibility:hidden}
 </style>
 </head>
 <body>
@@ -1356,6 +1358,7 @@ function render(){
 
   const cal = document.getElementById("cal");
   cal.innerHTML = "";
+  cal.classList.toggle("ab-dezember", today >= 1);
   let done = 0;
   const geschafft = setOf("done"), geoeffnet = setOf("opened");
   for(const n of ORDER){
