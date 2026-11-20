@@ -2,9 +2,11 @@ import TapeNav from "./TapeNav.jsx";
 import Button from "./Button.jsx";
 import Marker from "./Marker.jsx";
 import Tape from "./Tape.jsx";
+import AdventHinweis, { adventAktiv } from "./AdventHinweis.jsx";
 import { hero, signupHref } from "../data/content.js";
 
 export default function Hero() {
+  const advent = adventAktiv();
   return (
     <section
       id="start"
@@ -48,15 +50,21 @@ export default function Hero() {
           </h1>
 
           {/* Scribble mit Pfeil zur Headline */}
-          <Marker
-            arrow="down-left"
-            className="absolute right-4 top-[48%] hidden text-xl leading-tight sm:block lg:text-2xl"
+          {/* Ab xl zeigt der Pfeil auf den Adventskranz (solange er aktiv ist) */}
+          <div
+            className={`absolute right-4 top-[48%] hidden ${advent ? "xl:block" : "sm:block"}`}
           >
-            {hero.scribbles.midRight}
-          </Marker>
+            <Marker arrow="down-left" className="text-xl leading-tight lg:text-2xl">
+              {hero.scribbles.midRight}
+            </Marker>
+            {advent && (
+              <AdventHinweis className="absolute right-full top-full mr-4 -translate-y-1/2" />
+            )}
+          </div>
 
-          {/* Magenta-Banner wie auf der Titelfolie */}
-          <div className="relative mt-7 inline-block">
+          {/* Magenta-Banner wie auf der Titelfolie, daneben der Adventskranz (zeitlich begrenzt) */}
+          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-4 sm:gap-x-10">
+          <div className="relative inline-block shrink-0">
             <p
               className="bg-magenta px-6 py-4 text-[19px] leading-tight font-bold text-white glow-box sm:text-[26px] md:text-[30px]"
               style={{
@@ -76,6 +84,8 @@ export default function Hero() {
             >
               {hero.scribbles.bottomLeft}
             </Marker>
+          </div>
+            {advent && <AdventHinweis className="ml-auto xl:hidden" />}
           </div>
 
           <p className="mt-8 max-w-md text-base leading-relaxed text-dim sm:mt-24 md:text-lg">

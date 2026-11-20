@@ -156,3 +156,15 @@ body {
   outline: 3px solid var(--color-magenta);
   outline-offset: 3px;
 }
+
+/* Adventskranz-Hinweis (components/AdventHinweis.jsx): Flammen flackern leicht */
+.advent-flamme {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: advent-flackern 1.6s ease-in-out infinite alternate;
+}
+@keyframes advent-flackern {
+  0% { transform: scale(1, 1); opacity: 1; }
+  50% { transform: scale(0.88, 1.08) rotate(-3deg); opacity: 0.85; }
+  100% { transform: scale(1.05, 0.94) rotate(2deg); opacity: 1; }
+}

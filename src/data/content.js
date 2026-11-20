@@ -16,6 +16,15 @@ export const ticker = [
   "Wir nehmen uns den Raum",
 ];
 
+// Hinweis auf den KI-Adventskalender: Adventskranz neben dem Magenta-Banner im Kopfbereich.
+// Verschwindet automatisch nach dem Datum in "bis" (Zeit in Berlin).
+export const adventHinweis = {
+  href: "/advent/",
+  bis: "2027-01-01T00:00:00+01:00",
+  notiz: "Zum\nAdventskalender",
+  label: "Zum KI-Adventskalender für Lehrerinnen",
+};
+
 export const hero = {
   issue: "Issue 01",
   season: "Season: Glow up",
