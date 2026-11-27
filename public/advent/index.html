@@ -142,6 +142,7 @@
 
   /* Feste Zufallsreihenfolge wie beim Schoko-Kalender: 8 Spalten, 4 Reihen,
      5 breite Türen und eine doppelt große Tür 24 füllen das Raster lückenlos */
+  .browser-hint{color:var(--faint); font-size:12px; line-height:1.5; margin:12px 0 0; max-width:640px}
   .cal{display:grid; grid-template-columns:repeat(8, 1fr); grid-auto-rows:clamp(90px, 8.2vw, 110px); grid-auto-flow:dense; gap:10px}
   .door.wide{grid-column:span 2}
   .door.big{grid-column:span 2; grid-row:span 2}
@@ -446,6 +447,7 @@
   .start-jump{display:inline-block; margin:22px 0 0; padding:9px 16px; border:1px solid var(--accent); color:var(--white); text-decoration:none; font-family:var(--font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; transition:background .2s}
   .start-jump b{color:var(--accent); font-weight:600; margin-left:6px}
   .start-jump:hover, .start-jump:focus-visible{background:var(--ink-2)}
+  .start-jump[hidden], .startbox .consent[hidden]{display:none}
   .startbox{scroll-margin-top:24px; margin:34px 0 0; border:1px solid var(--accent); background:var(--ink-2); padding:24px 28px}
   .startbox h3{font-family:var(--font-display); font-weight:900; text-transform:uppercase; color:var(--white); font-size:22px; line-height:1.05; margin:8px 0 8px}
   .startbox > p{margin:0 0 6px; max-width:640px}
@@ -639,7 +641,7 @@
     </aside>
   </header>
 
-  <a class="start-jump" id="startJump" href="#startBox" hidden>Soll ich dir am 1. Dezember Bescheid sagen? <b>Erinner mich ↓</b></a>
+  <a class="start-jump" id="startJump" href="#startBox" hidden><span id="startJumpText">Soll ich dir am 1. Dezember Bescheid sagen?</span> <b>Erinner mich ↓</b></a>
 
 
   <section>
@@ -652,25 +654,26 @@
       <button class="btn to-today" id="toToday" type="button">Zu Tür 01 →</button>
     </div>
     <div class="cal" id="cal"></div>
+    <p class="browser-hint">* Der Kalender merkt sich deine geschafften Türen und Geschenke in diesem Browser. Öffne ihn am besten immer im selben Browser auf demselben Gerät, zum Beispiel über den Link in deiner Mail.</p>
   </section>
 
   <section class="startbox" id="startBox" hidden>
-    <div class="kicker">Start am 1. Dezember</div>
-    <h3>Soll ich dir Bescheid sagen?</h3>
-    <p>Am 1. Dezember geht die erste Tür auf. Trag dich ein, dann schicke ich dir an dem Morgen eine kurze Mail. Mehr nicht – außer du willst es.</p>
+    <div class="kicker" id="startKicker">Start am 1. Dezember</div>
+    <h3 id="startTitle">Soll ich dir Bescheid sagen?</h3>
+    <p id="startIntro">Am 1. Dezember geht die erste Tür auf. Trag dich ein, dann schicke ich dir an dem Morgen eine kurze Mail. Mehr nicht – außer du willst es.</p>
     <div class="gate" id="startForm">
       <form onsubmit="registerStart(event)">
         <label for="startMail" class="lbl" style="display:block;margin-top:14px">Deine E-Mail-Adresse</label>
         <input id="startMail" type="email" placeholder="du@beispiel.de" autocomplete="email" required>
-        <label class="consent"><input id="startOptin" type="checkbox" required><span>Ja, schick mir am 1. Dezember eine E-Mail, wenn der KI-Adventskalender von Level Up, Ladies! startet. Mehr dazu in der <a id="startDsLink" href="#" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span></label>
-        <label class="consent"><input id="startReminder" type="checkbox"><span>Und erinnere mich danach bis zum 24. Dezember jeden Morgen an mein neues Türchen. (freiwillig)</span></label>
+        <label class="consent"><input id="startOptin" type="checkbox" required><span><span id="startOptinText">Ja, schick mir am 1. Dezember eine E-Mail, wenn der KI-Adventskalender von Level Up, Ladies! startet.</span> Mehr dazu in der <a id="startDsLink" href="#" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span></label>
+        <label class="consent" id="startReminderRow"><input id="startReminder" type="checkbox"><span>Und erinnere mich danach bis zum 24. Dezember jeden Morgen an mein neues Türchen. (freiwillig)</span></label>
         <input class="hp" id="startHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn" type="submit" id="startBtn">Erinner mich</button>
         <p class="gate-err" id="startErr" hidden></p>
       </form>
       <small>Abmelden kannst du dich jederzeit über den Link in jeder Mail. Für den Versand nutzen wir Brevo, das in unserem Auftrag arbeitet.</small>
     </div>
-    <p class="done-msg" id="startDone" hidden>Fast geschafft! Bitte bestätige noch kurz den Link in deinem Postfach – dann melde ich mich am 1. Dezember.</p>
+    <p class="done-msg" id="startDone" hidden>Fast geschafft! Bitte bestätige noch kurz den Link in deinem Postfach – <span id="startDoneText">dann melde ich mich am 1. Dezember.</span></p>
   </section>
 
   <section class="teaser">
@@ -767,6 +770,7 @@ const KAL = {
     gate:"Trag dich einmal ein, dann geht die Tür mit deinem Geschenk auf – und alle weiteren Geschenk-Türen auch. Du stehst dann auf meiner Warteliste: Sobald feststeht, wann meine Workshop-Season startet, erfährst du es als Erste und kannst dich anmelden. Wenn du magst, erinnere ich dich außerdem jeden Morgen an dein neues Türchen – das entscheidest du selbst.",
     consent:"Ja, ich komme auf Insas Warteliste für die Workshop-Season von Level Up, Ladies! und erfahre per E-Mail als Erste, wann die Anmeldung startet.",
     reminder:"Ja, erinnere mich bis zum 24. Dezember jeden Morgen per E-Mail an mein neues Türchen. (freiwillig)",
+    gateMitErinnerung:"Trag dich einmal ein, dann geht die Tür mit deinem Geschenk auf – und alle weiteren Geschenk-Türen auch. Du stehst dann auf meiner Warteliste: Sobald feststeht, wann meine Workshop-Season startet, erfährst du es als Erste. Deine tägliche Erinnerung läuft ja schon, darum musst du dich nicht mehr kümmern.",
     // Brevo-Formular „Advent 2026 B · Start“ (Liste nur für die Startmail am 1.12.) – URL nach dem Anlegen eintragen
     startForm:"https://88634621.sibforms.com/serve/MUIFAIIt_xgYLlXoEJBMxuAoHY1z7EfcNlMe49sCRVUiWW8lOZfRJ_H7C2rX2H_Liz1Tpiy4zTliQKpfiUQ9jgE74DxWF4KhU9vd8Yq8oNaJUms60Kq-9Pwp8Ny_xfntkARS9XPDOF8qxiAsqSRQBQlRJZ4ED4q-tzyNWBtQEi8llf32PlqS7S4pdweqsP457uVORL5zHl_jNujr_Q==",
     brevoForm:"https://88634621.sibforms.com/serve/MUIFAJ3o6_IZ6a2xARGbuqQIH898smWWqpeoaodRc7C4Ar_TAf7W-R9gW6N7Z6WcPciMP5Yj7MdQGO6w5JdfxyrsYzuxo0H7BP_5ETpZcTradPCFbUmdqpZHUuwjQ7rTcmOe1iAfaPlpIDmqsvJsjPLGbx1GltkEuWXkvbuWa-k-KcnU2SeLnkql7qqx7PEwNLkX8keMAosmwSUMdA==",
@@ -1391,8 +1395,22 @@ function render(){
   // Startvormerkung nur vor dem 1. Dezember (im Entwurf mit ?vorstart ansehen)
   // Startvormerkung: nur vor dem 1. Dezember und nur, solange sie sich noch nicht eingetragen hat
   // (weder hier noch über eine Geschenk-Tür). Oben steht nur ein kleiner Button, das Formular unten.
-  const startDone = store.get("lul-advent-start-" + kal, false) || registered[kal];
-  const zeigeStart = K.startForm !== undefined && (today < 1 || params.has("vorstart")) && !startDone;
+  // Ab dem 1. Dezember wird daraus die Anmeldung zur täglichen Türchen-Erinnerung (gleiches Brevo-Formular,
+  // ERINNERUNG = Ja). Sie verschwindet, sobald die Erinnerung an ist – auch wenn sie an Tür 6 eingeschaltet wurde.
+  const abStart = today >= 1 && !params.has("vorstart");
+  const startDone = abStart ? store.get("lul-advent-erinnerung-" + kal, false) === true
+                            : store.get("lul-advent-start-" + kal, false) || registered[kal];
+  const zeigeStart = K.startForm !== undefined && (abStart ? today < 24 : true) && !startDone;
+  const st = (id, txt) => document.getElementById(id).textContent = txt;
+  if(abStart){
+    st("startJumpText", "Jeden Morgen eine kurze Mail, wenn dein neues Türchen offen ist?");
+    st("startKicker", "Türchen-Erinnerung");
+    st("startTitle", "Soll ich dich an die Türchen erinnern?");
+    st("startIntro", "Jeden Morgen geht eine neue Tür auf. Trag dich ein, dann schicke ich dir bis zum 24. Dezember jeden Morgen eine kurze Mail, sobald dein neues Türchen offen ist. Mehr nicht.");
+    st("startOptinText", "Ja, erinnere mich bis zum 24. Dezember jeden Morgen per E-Mail an mein neues Türchen im KI-Adventskalender von Level Up, Ladies!");
+    st("startDoneText", "dann erinnere ich dich ab morgen jeden Morgen an dein neues Türchen.");
+  }
+  document.getElementById("startReminderRow").hidden = abStart;
   document.getElementById("startBox").hidden = !(zeigeStart || startGerade);
   document.getElementById("startJump").hidden = !zeigeStart;
   document.getElementById("startDsLink").href = DATENSCHUTZ_URL;
@@ -1632,15 +1650,17 @@ function openDoor(n){
 
   // Nur Türen mit Geschenk (6, 13, 20, 24) brauchen die Eintragung, alle anderen bleiben frei
   if(BONUS[kal][n] && !registered[kal] && !alleOffen){
+    // Wer die tägliche Erinnerung schon vor dem Start bestellt hat, wird an der Geschenk-Tür nicht noch einmal gefragt
+    const hatErinnerung = store.get("lul-advent-erinnerung-" + kal, false) === true;
     sheet.innerHTML = head + `
       <div class="block gate">
         <div class="lbl">${n === 6 ? "Dein Nikolaus-Geschenk wartet" : "Hinter dieser Tür wartet ein Geschenk"}</div>
-        <p>${K.gate}</p>
+        <p>${hatErinnerung && K.gateMitErinnerung ? K.gateMitErinnerung : K.gate}</p>
         <form onsubmit="register(event, ${n})">
           <label for="mail" class="lbl" style="display:block;margin-top:14px">Deine E-Mail-Adresse</label>
           <input id="mail" name="EMAIL" type="email" placeholder="du@beispiel.de" autocomplete="email" required>
           <label class="consent"><input id="optin" type="checkbox" required><span>${K.consent} Mehr dazu in der <a href="${DATENSCHUTZ_URL}" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span></label>
-          ${K.reminder ? `<label class="consent"><input id="reminder" type="checkbox"${store.get("lul-advent-erinnerung-" + kal, false) === true ? " checked" : ""}><span>${K.reminder}</span></label>` : ""}
+          ${K.reminder && !hatErinnerung ? `<label class="consent"><input id="reminder" type="checkbox"><span>${K.reminder}</span></label>` : ""}
           <input class="hp" id="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn" type="submit" id="gateBtn">Tür öffnen</button>
           <p class="gate-err" id="gateErr" hidden></p>
@@ -1812,7 +1832,8 @@ async function registerStart(e){
   const fd = new FormData();
   fd.append("EMAIL", document.getElementById("startMail").value.trim());
   fd.append("OPT_IN", "1");
-  if(rem.checked) fd.append("ERINNERUNG", "1");
+  const nurErinnerung = today >= 1 && !params.has("vorstart");
+  if(rem.checked || nurErinnerung) fd.append("ERINNERUNG", "1");
   fd.append("email_address_check", document.getElementById("startHp").value);
   fd.append("locale", "de");
   btn.disabled = true; btn.textContent = "Einen Moment …"; err.hidden = true;
@@ -1825,7 +1846,7 @@ async function registerStart(e){
     return;
   }
   store.set("lul-advent-start-" + kal, true);
-  store.set("lul-advent-erinnerung-" + kal, rem.checked);
+  store.set("lul-advent-erinnerung-" + kal, rem.checked || nurErinnerung);
   startGerade = true;
   render();
 }
