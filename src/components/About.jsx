@@ -69,6 +69,14 @@ export default function About() {
                 {p}
               </p>
             ))}
+            {about.liste && (
+              <ul className="space-y-2 pl-5 text-base leading-relaxed text-black/85 marker:text-magenta md:text-[17px] list-disc">
+                {about.liste.map((punkt) => (
+                  <li key={punkt.slice(0, 24)}>{punkt}</li>
+                ))}
+              </ul>
+            )}
+            {about.quelle && <p className="text-[13px] text-black/55">{about.quelle}</p>}
           </div>
 
           <div className="mt-10 flex flex-wrap items-end gap-6">

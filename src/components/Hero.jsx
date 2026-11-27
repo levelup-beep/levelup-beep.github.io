@@ -100,9 +100,11 @@ export default function Hero() {
             <Button href={signupHref} pulse className="w-full sm:w-auto">
               {hero.ctaPrimary}
             </Button>
-            <Button variant="outline" scrollTo="#angebot" className="w-full sm:w-auto">
-              {hero.ctaSecondary}
-            </Button>
+            {hero.ctaSecondary && (
+              <Button variant="outline" scrollTo="#angebot" className="w-full sm:w-auto">
+                {hero.ctaSecondary}
+              </Button>
+            )}
           </div>
 
           <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.22em] text-faint md:mt-14">

@@ -1,9 +1,7 @@
 import Hero from "./components/Hero.jsx";
 import Ticker from "./components/Ticker.jsx";
 import About from "./components/About.jsx";
-import Angebot from "./components/Angebot.jsx";
 import LernenMitMir from "./components/LernenMitMir.jsx";
-import SeriesTeaser from "./components/SeriesTeaser.jsx";
 import CtaSection from "./components/CtaSection.jsx";
 import Footer from "./components/Footer.jsx";
 import { useReveal } from "./hooks/useReveal.js";
@@ -22,9 +20,9 @@ export default function App() {
         <About />
         <Ticker />
         <LernenMitMir />
-        <SeriesTeaser />
+        {/* Angebot und Season-Übersicht vorerst ausgeblendet (Insa, 27.11.2026):
+            Workshops nur anteasern, nichts zum Kaufen zeigen. */}
         <Ticker tone="light" reverse />
-        <Angebot />
         <CtaSection />
       </main>
       <Footer />

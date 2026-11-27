@@ -38,7 +38,8 @@ export const hero = {
     bottomLeft: "Knowledge = Power",
   },
   ctaPrimary: "Auf die Warteliste",
-  ctaSecondary: "Mein Angebot",
+  // "Mein Angebot" vorerst ausgeblendet (Insa, 27.11.2026)
+  ctaSecondary: "",
   portraitAlt: "Insa in Schwarz-Weiß am Schreibtisch, das Kinn auf die Hand gestützt",
 };
 
@@ -48,10 +49,20 @@ export const hero = {
 export const about = {
   kicker: "Player 001",
   headline: "Wer bin ich?",
+  // Mission (Insa, 27.11.2026). Zahlen aus JIM-Studie 2026 (mpfs), S. 70: 92 % nutzen KI zumindest selten,
+  // 75 % der KI-Nutzenden für Hausaufgaben und Lernen. „Als Abkürzung“ ist Insas Einschätzung, nicht aus der Studie.
   paragraphs: [
-    "Ich bin Insa. Lehrerin für Mathe, Informatik und GL an einer Gesamtschule in NRW. Ich sehe jeden Tag: Viele Lehrerinnen haben Angst vor KI oder kennen sie gar nicht. Das Problem ist nicht die Technologie – es ist der Zugang.",
-    "Deshalb mache ich Level Up Ladies: Um zu zeigen, dass KI ein Werkzeug ist, das du für dich nutzen kannst. Einmal richtig eingerichtet – und es arbeitet für dich. Ohne Angst. Ohne Zauberei. Ohne die ganzen Buzzwords.",
+    "Ich bin Insa. Lehrerin für Mathe, Informatik und GL an einer Gesamtschule in NRW.",
+    "92 Prozent der Jugendlichen nutzen KI, drei Viertel davon für Hausaufgaben und Lernen.* Viel zu oft als Abkürzung: Sie lassen die KI denken, statt selbst zu denken.",
+    "Deshalb ist mir wichtig: Wir Lehrerinnen eignen uns KI-Skills an, bevor wir uns überfordert fühlen. Wer selbst mit KI arbeitet,",
   ],
+  liste: [
+    "weiß, was möglich ist,",
+    "wird sicher im Umgang mit den Tools,",
+    "versteht, was KI mit unseren Schülerinnen und Schülern macht,",
+    "und kann Aufgaben so verändern, dass KI sinnvoll dazugehört – und das Denken trotzdem bei den Kindern bleibt.",
+  ],
+  quelle: "* JIM-Studie 2026, Medienpädagogischer Forschungsverbund Südwest (mpfs): 1.200 Jugendliche von 12 bis 19 Jahren.",
   accent: "Knowledge = Power",
   scribble: "Fang einfach an",
   photoAlt: "Insa Riese, Lehrerin und Gründerin von Level Up Ladies",
@@ -63,10 +74,10 @@ export const about = {
 // Level-01-Vorstellung (Insa, 11.11.2026). Alle Punkte stammen aus den
 // Level-Beschreibungen weiter unten (workshop, series) und aus "Wer bin ich".
 export const lernen = {
-  kicker: "Mit mir lernen",
-  headline: "Das bekommst du",
+  kicker: "In der Pipeline",
+  headline: "Daran arbeite ich gerade",
   intro:
-    "In meinen Workshops richtest du Claude so ein, dass es für deinen Schulalltag arbeitet. Einmal richtig eingerichtet, reicht ein Satz.",
+    "Ich baue gerade Workshops für Lehrerinnen: Du richtest Claude so ein, dass es für deinen Schulalltag arbeitet. Einmal richtig eingerichtet, reicht ein Satz. Das wird drinstecken:",
   gruppen: [
     {
       titel: "Dein Setup",
@@ -93,7 +104,7 @@ export const lernen = {
       ],
     },
   ],
-  pointe: "Das erste Erfolgserlebnis kommt gleich im ersten Level: „Ja, das geht!“",
+  pointe: "Wann es losgeht, steht noch nicht fest. Auf der Warteliste erfährst du es als Erste.",
 };
 
 // "Mein Angebot": steht unten vor dem Schlussblock, angelehnt an Mareikes
@@ -226,10 +237,10 @@ export const cta = {
   subheading: ["Lass uns den digitalen Gap schließen.", "Gemeinsam. Mit Claude. Ohne Angst."],
   song: "Klick. Prompt. Done. – Das ist dein Glow-up.",
   button: "Auf die Warteliste",
-  note: "Du hast Interesse an einem Workshop mit mir? Setz dich auf die Warteliste, dann verpasst du keine Info.",
+  note: "Workshops sind in Planung. Du willst als Erste davon hören? Setz dich auf die Warteliste.",
   buchen: {
-    frage: "Du möchtest mich für einen Workshop buchen?",
-    link: "Schreib mir eine Nachricht.",
+    frage: "Du hast Fragen oder Interesse?",
+    link: "Schreib mir.",
     href: `mailto:${kontaktMail}?subject=Workshop-Anfrage%3A%20Level%20Up%2C%20Ladies%21&body=Hallo%20Insa%2C%0D%0A%0D%0A`,
   },
 };
@@ -242,7 +253,7 @@ export const footer = {
   // Geplant ist eine eigene Seite zur Philosophie hinter Level Up Ladies (ROADMAP 3.4).
   links: [
     { label: "Über Level Up Ladies", to: "#ueber-mich" },
-    { label: "Die Workshop-Season", to: "#serie" },
+    { label: "In der Pipeline", to: "#lernen" },
     { label: "Warteliste", to: "/warteliste/" },
   ],
   contactHeadline: "Kontakt",
