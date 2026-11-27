@@ -47,6 +47,15 @@ export const warteliste = {
   hinweis: "Du bekommst eine Mail mit einem Bestätigungslink. Erst der Klick darin schließt die Anmeldung ab.",
   senden: "Wird gesendet.",
   erfolg: "Fast fertig. Schau in dein Postfach und klick den Bestätigungslink.",
+  // Ziel der Weiterleitung nach dem Bestätigungslink in der Brevo-Mail:
+  // https://levelupladies.de/warteliste/?bestaetigt=1 (in Brevo beim Formular eintragen)
+  bestaetigt: {
+    kicker: "Bestätigt",
+    headline: "Geschafft – du bist dabei.",
+    absaetze: [
+      "Danke, dass du deine Adresse bestätigt hast. Sobald es Neuigkeiten gibt, hörst du als Erste von uns.",
+    ],
+  },
   fehler: (mail) =>
     `Das Absenden hat nicht geklappt. Schreib bitte an ${mail}, dann tragen wir dich von Hand ein.`,
 };

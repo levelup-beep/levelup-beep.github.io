@@ -11,7 +11,8 @@ const GRUPPEN = ["job", "schule", "business"];
 export default function Warteliste() {
   const param = new URLSearchParams(window.location.search).get("gruppe");
   const gruppe = GRUPPEN.includes(param) ? param : "allgemein";
-  const text = gruppe === "schule" ? warteliste.schule : warteliste.allgemein;
+  const bestaetigt = new URLSearchParams(window.location.search).has("bestaetigt");
+  const text = bestaetigt ? warteliste.bestaetigt : gruppe === "schule" ? warteliste.schule : warteliste.allgemein;
   const [status, setStatus] = useState("");
   const [fertig, setFertig] = useState(false);
 
@@ -69,6 +70,7 @@ export default function Warteliste() {
           </p>
         ))}
 
+        {!bestaetigt && (
         <form
           action={brevoFormUrl}
           method="post"
@@ -129,6 +131,7 @@ export default function Warteliste() {
             {status}
           </p>
         </form>
+        )}
       </div>
     </main>
   );
