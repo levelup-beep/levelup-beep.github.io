@@ -104,7 +104,7 @@ export const lernen = {
       ],
     },
   ],
-  pointe: "Wann es losgeht, steht noch nicht fest. Auf der Warteliste erfährst du es als Erste.",
+  pointe: "Setz dich auf die Warteliste, wenn du nicht verpassen willst, wann es losgeht.",
 };
 
 // "Mein Angebot": steht unten vor dem Schlussblock, angelehnt an Mareikes

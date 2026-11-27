@@ -443,7 +443,10 @@
   .placeholder{font-family:var(--font-mono); font-size:12px; color:var(--faint); border:1px dashed var(--hair-2); padding:14px; text-align:center; letter-spacing:.08em}
 
   /* Vor dem 1. Dezember: Erinnerung zum Start (eigene Brevo-Liste, ohne Warteliste) */
-  .startbox{margin:34px 0 0; border:1px solid var(--accent); background:var(--ink-2); padding:24px 28px}
+  .start-jump{display:inline-block; margin:22px 0 0; padding:9px 16px; border:1px solid var(--accent); color:var(--white); text-decoration:none; font-family:var(--font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; transition:background .2s}
+  .start-jump b{color:var(--accent); font-weight:600; margin-left:6px}
+  .start-jump:hover, .start-jump:focus-visible{background:var(--ink-2)}
+  .startbox{scroll-margin-top:24px; margin:34px 0 0; border:1px solid var(--accent); background:var(--ink-2); padding:24px 28px}
   .startbox h3{font-family:var(--font-display); font-weight:900; text-transform:uppercase; color:var(--white); font-size:22px; line-height:1.05; margin:8px 0 8px}
   .startbox > p{margin:0 0 6px; max-width:640px}
   .startbox .gate{max-width:560px}
@@ -636,6 +639,21 @@
     </aside>
   </header>
 
+  <a class="start-jump" id="startJump" href="#startBox" hidden>Soll ich dir am 1. Dezember Bescheid sagen? <b>Erinner mich ↓</b></a>
+
+
+  <section>
+    <div class="cal-head">
+      <div>
+        <div class="kicker">The Calendar</div>
+        <h2>Dein Weg zum eigenen KI-Setup</h2>
+      </div>
+      <div class="legend"><span class="l-today">Heute</span><span class="l-done">Geschafft</span><span class="l-open">Geöffnet</span><span class="l-miss">Nachholen</span><span class="l-zu">Noch zu</span></div>
+      <button class="btn to-today" id="toToday" type="button">Zu Tür 01 →</button>
+    </div>
+    <div class="cal" id="cal"></div>
+  </section>
+
   <section class="startbox" id="startBox" hidden>
     <div class="kicker">Start am 1. Dezember</div>
     <h3>Soll ich dir Bescheid sagen?</h3>
@@ -655,21 +673,9 @@
     <p class="done-msg" id="startDone" hidden>Fast geschafft! Bitte bestätige noch kurz den Link in deinem Postfach – dann melde ich mich am 1. Dezember.</p>
   </section>
 
-  <section>
-    <div class="cal-head">
-      <div>
-        <div class="kicker">The Calendar</div>
-        <h2>Dein Weg zum eigenen KI-Setup</h2>
-      </div>
-      <div class="legend"><span class="l-today">Heute</span><span class="l-done">Geschafft</span><span class="l-open">Geöffnet</span><span class="l-miss">Nachholen</span><span class="l-zu">Noch zu</span></div>
-      <button class="btn to-today" id="toToday" type="button">Zu Tür 01 →</button>
-    </div>
-    <div class="cal" id="cal"></div>
-  </section>
-
   <section class="teaser">
     <div>
-      <div class="kicker" id="teaserKicker">Next Level · Workshop-Season</div>
+      <div class="kicker" id="teaserKicker">Next Level · In der Pipeline</div>
       <h3>Aus 24 Hacks wird dein KI-Setup</h3>
       <p id="teaserText"></p>
     </div>
@@ -757,14 +763,14 @@ const KAL = {
   B: {
     sender:"Insa", photo:"insa.jpg",
     line:"KI-Power für Frauen im Bildungsbereich.",
-    teaserKicker:"Next Level · Workshop-Season", teaserCta:"Mehr erfahren", teaserUrl:"https://levelupladies.de/schule/",
+    teaserKicker:"Next Level · In der Pipeline", teaserCta:"Mehr erfahren", teaserUrl:"https://levelupladies.de/schule/#lernen",
     gate:"Trag dich einmal ein, dann geht die Tür mit deinem Geschenk auf – und alle weiteren Geschenk-Türen auch. Du stehst dann auf meiner Warteliste: Sobald feststeht, wann meine Workshop-Season startet, erfährst du es als Erste und kannst dich anmelden. Wenn du magst, erinnere ich dich außerdem jeden Morgen an dein neues Türchen – das entscheidest du selbst.",
     consent:"Ja, ich komme auf Insas Warteliste für die Workshop-Season von Level Up, Ladies! und erfahre per E-Mail als Erste, wann die Anmeldung startet.",
     reminder:"Ja, erinnere mich bis zum 24. Dezember jeden Morgen per E-Mail an mein neues Türchen. (freiwillig)",
     // Brevo-Formular „Advent 2026 B · Start“ (Liste nur für die Startmail am 1.12.) – URL nach dem Anlegen eintragen
     startForm:"https://88634621.sibforms.com/serve/MUIFAIIt_xgYLlXoEJBMxuAoHY1z7EfcNlMe49sCRVUiWW8lOZfRJ_H7C2rX2H_Liz1Tpiy4zTliQKpfiUQ9jgE74DxWF4KhU9vd8Yq8oNaJUms60Kq-9Pwp8Ny_xfntkARS9XPDOF8qxiAsqSRQBQlRJZ4ED4q-tzyNWBtQEi8llf32PlqS7S4pdweqsP457uVORL5zHl_jNujr_Q==",
     brevoForm:"https://88634621.sibforms.com/serve/MUIFAJ3o6_IZ6a2xARGbuqQIH898smWWqpeoaodRc7C4Ar_TAf7W-R9gW6N7Z6WcPciMP5Yj7MdQGO6w5JdfxyrsYzuxo0H7BP_5ETpZcTradPCFbUmdqpZHUuwjQ7rTcmOe1iAfaPlpIDmqsvJsjPLGbx1GltkEuWXkvbuWa-k-KcnU2SeLnkql7qqx7PEwNLkX8keMAosmwSUMdA==",
-    teaser:"In meiner Workshop-Season richtest du Claude so ein, dass es dich kennt. Danach baust du Level für Level Masterprompts, eigene kleine Tools und sogar ein Escape Game für deine Klasse. Schritt für Schritt, ohne Vorwissen. Wann es losgeht, steht noch nicht fest: Trag dich in meine Warteliste ein und sei die Erste, die erfährt, wann du dich anmelden kannst.",
+    teaser:"Daran arbeite ich gerade: Workshops für Lehrerinnen, in denen du Claude so einrichtest, dass es für deinen Schulalltag arbeitet. Einmal richtig eingerichtet, reicht ein Satz. Setz dich auf die Warteliste, wenn du nicht verpassen willst, wann es losgeht.",
     doors:["Dreh den Spieß um","Vorher/Nachher","Dein Ich-Profil","Einmal sagen, immer gemerkt","Nachschärfen statt neu anfangen","Der Elternbrief zur Weihnachtsfeier",
       "Dein Stil-Guide","Dein erstes Weihnachts-Arbeitsblatt","Aus Notizen wird Ordnung","Die letzte Schulwoche","Platzhalter-Prompts","Die Weihnachtsstunde",
       "Schülerdaten, aber sicher","Den Lehrplan befragen","Der Faktencheck","Aufgaben, die Denken verlangen","Das Elterngespräch üben","Fake News und Deepfakes",
@@ -1336,7 +1342,7 @@ Object.assign(INHALT.B, {
   "offer": {
    "kicker": "Level up",
    "title": "Dir hat der Kalender gefallen?",
-   "text": "Und er hat dich ein Stück weitergebracht? Dann hebt meine Workshop-Season deine Skills aufs nächste Level. Wann es losgeht, erfährst du als Erste über meine Warteliste.<br><br><b>Level up!</b> Ich freu mich, wenn du dabei bist.<br>Deine Insa",
+   "text": "Und er hat dich ein Stück weitergebracht? Dann hebt meine Workshop-Season deine Skills aufs nächste Level. Setz dich auf die Warteliste, wenn du nicht verpassen willst, wann es losgeht.<br><br><b>Level up!</b> Ich freu mich, wenn du dabei bist.<br>Deine Insa",
    "cta": "Mehr zur Workshop-Season"
   },
   "tomorrowLabel": "Nach den Ferien",
@@ -1361,6 +1367,7 @@ let today = vorschau && +params.get("tag") ? +params.get("tag") : Math.min(25, M
 let alleOffen = vorschau;
 const DATENSCHUTZ_URL = "https://levelupladies.de/datenschutz/";
 let registered = {A:false, B:false};
+let startGerade = false; // gerade eben unten eingetragen: Bestätigung noch zeigen
 try{ for(const k of ["A","B"]) registered[k] = localStorage.getItem("lul-advent-reg-" + k) === "1" }catch(e){}
 
 // Vergangene Türen: geschafft, wenn „Erledigt ✓“ gedrückt wurde, sonst zum Nachholen
@@ -1382,11 +1389,15 @@ function render(){
   document.getElementById("teaserCta").href = K.teaserUrl;
   document.getElementById("footSender").textContent = "Level Up, Ladies! · " + K.sender;
   // Startvormerkung nur vor dem 1. Dezember (im Entwurf mit ?vorstart ansehen)
-  document.getElementById("startBox").hidden = !(K.startForm !== undefined && (today < 1 || params.has("vorstart")));
+  // Startvormerkung: nur vor dem 1. Dezember und nur, solange sie sich noch nicht eingetragen hat
+  // (weder hier noch über eine Geschenk-Tür). Oben steht nur ein kleiner Button, das Formular unten.
+  const startDone = store.get("lul-advent-start-" + kal, false) || registered[kal];
+  const zeigeStart = K.startForm !== undefined && (today < 1 || params.has("vorstart")) && !startDone;
+  document.getElementById("startBox").hidden = !(zeigeStart || startGerade);
+  document.getElementById("startJump").hidden = !zeigeStart;
   document.getElementById("startDsLink").href = DATENSCHUTZ_URL;
-  const startDone = store.get("lul-advent-start-" + kal, false);
-  document.getElementById("startForm").hidden = startDone;
-  document.getElementById("startDone").hidden = !startDone;
+  document.getElementById("startForm").hidden = startGerade;
+  document.getElementById("startDone").hidden = !startGerade;
   document.getElementById("tickerText").innerHTML =
     ("The Advent Issue <b>✶</b> 24 Türchen <b>✶</b> 5 Minuten am Tag <b>✶</b> Klick. Prompt. Done. <b>✶</b> " + K.line + " <b>✶</b> ").repeat(3);
 
@@ -1815,6 +1826,7 @@ async function registerStart(e){
   }
   store.set("lul-advent-start-" + kal, true);
   store.set("lul-advent-erinnerung-" + kal, rem.checked);
+  startGerade = true;
   render();
 }
 function copyPrompt(btn, n, which = "prompt"){
