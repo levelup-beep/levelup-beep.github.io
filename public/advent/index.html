@@ -453,6 +453,7 @@
   .startbox > p{margin:0 0 6px; max-width:640px}
   .startbox .gate{max-width:560px}
   .startbox .done-msg{color:var(--white); margin:12px 0 0}
+  .startbox .done-msg .spam-hint{display:block; margin-top:6px; opacity:.8}
 
   /* Anmelde-Schranke ab Tür 6 (Nikolaus, erstes Geschenk) */
   .gate input{width:100%; background:var(--ink); border:1px solid var(--hair-2); color:var(--white); font:inherit; padding:12px 14px; margin:6px 0 10px}
@@ -467,6 +468,7 @@
   /* Hinweis für gesperrte Türen */
   .toast{position:fixed; left:50%; bottom:86px; transform:translateX(-50%) translateY(20px); opacity:0; background:var(--white); color:var(--ink); font-family:var(--font-mono); font-size:12px; letter-spacing:.08em; padding:10px 16px; transition:.25s; pointer-events:none; z-index:30}
   .toast.show{opacity:1; transform:translateX(-50%)}
+  .toast{width:max-content; max-width:min(92vw,520px); text-align:center; line-height:1.5}
 
   /* ============ Entwurfs-Leiste (fliegt später raus) ============ */
   .draftbar{
@@ -671,9 +673,10 @@
         <button class="btn" type="submit" id="startBtn">Erinner mich</button>
         <p class="gate-err" id="startErr" hidden></p>
       </form>
+      <small>Du bekommst gleich eine Bestätigungsmail. Keine Mail da? Schau bitte auch im Spam-Ordner nach.</small>
       <small>Abmelden kannst du dich jederzeit über den Link in jeder Mail. Für den Versand nutzen wir Brevo, das in unserem Auftrag arbeitet.</small>
     </div>
-    <p class="done-msg" id="startDone" hidden>Fast geschafft! Bitte bestätige noch kurz den Link in deinem Postfach – <span id="startDoneText">dann melde ich mich am 1. Dezember.</span></p>
+    <p class="done-msg" id="startDone" hidden>Fast geschafft! Bitte bestätige noch kurz den Link in deinem Postfach – <span id="startDoneText">dann melde ich mich am 1. Dezember.</span><br><small class="spam-hint">Keine Mail da? Schau bitte auch im Spam-Ordner nach.</small></p>
   </section>
 
   <section class="teaser">
@@ -1665,6 +1668,7 @@ function openDoor(n){
           <button class="btn" type="submit" id="gateBtn">Tür öffnen</button>
           <p class="gate-err" id="gateErr" hidden></p>
         </form>
+        <small>Du bekommst gleich eine Bestätigungsmail. Keine Mail da? Schau bitte auch im Spam-Ordner nach.</small>
         <small>Abmelden kannst du dich jederzeit über den Link in jeder Mail. Für den Versand nutzen wir Brevo, das in unserem Auftrag arbeitet.</small>
       </div>`;
   } else if(INHALT[kal][n]){
@@ -1820,7 +1824,7 @@ async function register(e, n){
   try{ localStorage.setItem("lul-advent-reg-" + kal, "1") }catch(ex){}
   if(rem && (rem.checked || store.get("lul-advent-erinnerung-" + kal, null) === null)) store.set("lul-advent-erinnerung-" + kal, rem.checked);
   openDoor(n);
-  toast("Fast geschafft! Bitte bestätige noch kurz den Link in deinem Postfach.");
+  toast("Fast geschafft! Bitte bestätige noch kurz den Link in deinem Postfach. Keine Mail da? Schau auch im Spam-Ordner nach.", 6000);
 }
 // Vor dem 1. Dezember: Eintragung nur für die Startmail (eigene Brevo-Liste, Double-Opt-in).
 // Das freiwillige Häkchen setzt dasselbe Attribut ERINNERUNG wie an Tür 6.
@@ -1856,10 +1860,10 @@ function copyPrompt(btn, n, which = "prompt"){
   navigator.clipboard?.writeText(text).then(() => { btn.textContent = "Kopiert ✓"; setTimeout(() => btn.textContent = "Kopieren", 1600) });
 }
 let toastTimer;
-function toast(msg){
+function toast(msg, dauer = 2200){
   const t = document.getElementById("toast");
   t.textContent = msg; t.classList.add("show");
-  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), dauer);
 }
 
 document.getElementById("overlay").addEventListener("click", e => { if(e.target.id === "overlay") closeDoor() });
