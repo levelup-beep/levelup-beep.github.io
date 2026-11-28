@@ -455,18 +455,18 @@
   .startbox .done-msg{color:var(--white); margin:12px 0 0}
   .startbox .done-msg .spam-hint{display:block; margin-top:6px; opacity:.8}
   /* Aufwärmen zum 1. Advent (nur vor dem 1. Dezember) */
-  .warmup{margin:34px 0 0; border:1px solid var(--accent); background:var(--ink-2); padding:24px 28px; position:relative}
+  .warmup{margin:28px 0 36px; display:flex; align-items:center; gap:22px; max-width:640px}
   .warmup[hidden]{display:none}
-  .warmup h3{font-family:var(--font-display); font-weight:900; text-transform:uppercase; color:var(--white); font-size:clamp(22px, 3.4vw, 30px); line-height:1.02; margin:8px 0 10px}
-  .warmup > p{margin:0 0 6px; max-width:680px}
-  .warm-step{border-top:1px solid var(--hair); padding:16px 0 4px; margin-top:14px; max-width:720px}
-  .warm-step .lbl{font-family:var(--font-mono); font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:6px}
+  .warm-door{flex:0 0 auto; width:132px; height:120px}
+  .warmup h3{font-family:var(--font-display); font-weight:900; text-transform:uppercase; color:var(--white); font-size:20px; line-height:1.05; margin:6px 0 6px}
+  .warmup p{margin:0; font-size:15px}
+  .warm-intro{margin:0 0 4px}
   .warm-step p{margin:0 0 8px}
   .warm-step .prompt{margin:10px 0}
   .warm-step .tip{font-size:14.5px; opacity:.9}
-  .warm-step a{color:var(--accent)}
+  .warm-step a, .claude-link{color:var(--accent)}
   .warm-next{margin:18px 0 0; font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--white)}
-  @media (max-width:560px){ .warmup{padding:20px 16px} }
+  @media (max-width:560px){ .warmup{gap:14px} .warm-door{width:108px; height:112px} .warm-door .door-note{display:none} .warmup h3{font-size:17px} }
 
   /* Anmelde-Schranke ab Tür 6 (Nikolaus, erstes Geschenk) */
   .gate input{width:100%; background:var(--ink); border:1px solid var(--hair-2); color:var(--white); font:inherit; padding:12px 14px; margin:6px 0 10px}
@@ -660,16 +660,26 @@
 
   <!-- Aufwärmen zum 1. Advent: nur vor dem 1. Dezember sichtbar (im Entwurf mit ?vorstart) -->
   <section class="warmup" id="warmup" hidden>
-    <div class="kicker">Aufwärmen zum 1. Advent · 3 Minuten</div>
-    <h3>Dein Claude-Start, bevor die erste Tür aufgeht</h3>
-    <p>Am Dienstag geht's los. Damit du dann direkt loslegen kannst, wärmen wir uns heute schon mal auf: Claude öffnen, einen Prompt reinkopieren und staunen. Mehr nicht.</p>
-
-    <div class="warm-step">
+    <button class="door today warm-door" id="warmDoor" type="button" aria-label="Tür 00: Aufwärmen zum 1. Advent öffnen">
+      <span class="ribbon" aria-hidden="true"><i class="rv"></i><i class="rh"></i><b></b></span>
+      <span class="door-note" aria-hidden="true">schon heute!</span>
+      <span class="num">00</span>
+      <span><span class="title">Aufwärmen</span><br><span class="meta">3 Min.</span></span>
+    </button>
+    <div class="warm-text">
+      <div class="kicker">Bonus-Tür zum 1. Advent</div>
+      <h3>Kannst du nicht bis Dienstag warten?</h3>
+      <p>Dann öffne schon heute Tür 00. Drei Minuten, ein Prompt und ein kleines Aha.</p>
+    </div>
+  </section>
+  <template id="warmTpl">
+    <p class="warm-intro">Am Dienstag geht's los. Damit du dann direkt loslegen kannst, wärmen wir uns heute schon mal auf: Claude öffnen, einen Prompt reinkopieren und staunen. Mehr nicht.</p>
+    <div class="block warm-step">
       <div class="lbl">Schritt 1 · Claude öffnen</div>
       <p>Geh auf <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> oder lade dir die Claude-App aufs Handy. Wähl „Mit Google fortfahren“ oder gib deine E-Mail-Adresse ein und bestätige den Link aus der Mail. Die kostenlose Version reicht.</p>
     </div>
 
-    <div class="warm-step">
+    <div class="block warm-step">
       <div class="lbl">Schritt 2 · Dein Ferien-Countdown</div>
       <p>Kopier diesen Prompt in Claude und trag deinen letzten Schultag vor den Ferien ein:</p>
       <div class="prompt"><span class="ptxt" id="warmPrompt">Ich bin Lehrerin und freue mich schon auf die Weihnachtsferien. Mein letzter Schultag vor den Ferien ist der [Datum eintragen].
@@ -678,13 +688,13 @@ Bau mir daraus bitte einen kleinen, weihnachtlichen Countdown als interaktive Se
       <p class="tip">Nach ein paar Sekunden baut Claude dir eine kleine Seite mit deinem eigenen Countdown. Am Handy tippst du sie an, um sie zu öffnen. Gefällt dir etwas nicht? Schreib einfach dazu, was anders sein soll, zum Beispiel: „Mach es in Rot und Gold.“</p>
     </div>
 
-    <div class="warm-step">
+    <div class="block warm-step">
       <div class="lbl">Schritt 3 · Dienstag nicht verpassen</div>
-      <p id="warmRemind">Trag dich unten ein, dann schicke ich dir am 1. Dezember morgens eine kurze Mail, sobald Tür 01 offen ist. <a href="#startBox">Erinner mich ↓</a></p>
+      <p id="warmRemind">Trag dich unten ein, dann schicke ich dir am 1. Dezember morgens eine kurze Mail, sobald Tür 01 offen ist. <a href="#startBox" onclick="closeDoor()">Erinner mich ↓</a></p>
     </div>
 
     <p class="warm-next">Und am Dienstag? Da fragst nicht du Claude, sondern Claude dich.</p>
-  </section>
+  </template>
 
 
   <section>
@@ -830,13 +840,13 @@ const KAL = {
 const T1_GEMEINSAM = {
   hack:"Du musst nicht die richtige Frage kennen. Lass die KI die Fragen stellen.",
   steps:[
-    "Kopier den Prompt und füg ihn in Claude ein.",
+    "Kopier den Prompt und füg ihn in <a class=\"claude-link\" href=\"https://claude.ai\" target=\"_blank\" rel=\"noopener\">Claude</a> ein.",
     "Beantworte die 5 Fragen ehrlich. Stichpunkte reichen völlig.",
     "Probier einen der 3 Vorschläge sofort aus.",
     "Schließ den Chat einfach. Du findest ihn links in deiner Chatliste wieder – an Tür 3 brauchst du ihn."
   ],
   account:[
-    "Öffne <b>claude.ai</b> im Browser oder lade die Claude-App aufs Handy.",
+    "Öffne <a class=\"claude-link\" href=\"https://claude.ai\" target=\"_blank\" rel=\"noopener\">claude.ai</a> im Browser oder lade die Claude-App aufs Handy.",
     "Wähl „Mit Google fortfahren“ oder gib deine E-Mail-Adresse ein und bestätige den Link aus der Mail.",
     "Fertig. Das Eingabefeld ist dein Startpunkt. Die kostenlose Version reicht für fast alles im Kalender. Einzelne Funktionen wie Projekte sind dort begrenzt – wo das eine Rolle spielt, sage ich es dir an der Tür."
   ],
@@ -1415,6 +1425,7 @@ let today = vorschau && +params.get("tag") ? +params.get("tag") : Math.min(25, M
 let alleOffen = vorschau;
 const DATENSCHUTZ_URL = "https://levelupladies.de/datenschutz/";
 let registered = {A:false, B:false};
+let warmVorgemerkt = false; // für Tür 00: schon für den Start vorgemerkt?
 let startGerade = false; // gerade eben unten eingetragen: Bestätigung noch zeigen
 try{ for(const k of ["A","B"]) registered[k] = localStorage.getItem("lul-advent-reg-" + k) === "1" }catch(e){}
 
@@ -1457,9 +1468,7 @@ function render(){
   document.getElementById("startReminderRow").hidden = abStart;
   // Aufwärmen zum 1. Advent: nur vor dem 1. Dezember, nur Kalender B
   document.getElementById("warmup").hidden = abStart || kal !== "B";
-  if(!abStart && (startDone || startGerade)){
-    document.getElementById("warmRemind").textContent = "Erledigt: Du bist vorgemerkt ✓ Am 1. Dezember morgens bekommst du eine kurze Mail, sobald Tür 01 offen ist.";
-  }
+  warmVorgemerkt = startDone || startGerade;
   document.getElementById("startBox").hidden = !(zeigeStart || startGerade);
   document.getElementById("startJump").hidden = !zeigeStart;
   document.getElementById("startDsLink").href = DATENSCHUTZ_URL;
@@ -1688,6 +1697,7 @@ function showCert(name){
 }
 
 function openDoor(n){
+  if(n === 0){ openWarmup(); return; }
   const K = KAL[kal], sheet = document.getElementById("sheet");
   const week = WEEKS[Math.floor((n - 1) / 6)];
   // Dauer: Kernversprechen 5 Minuten, eigene Angabe über t.dauer; Vertiefen ist optional und kommt obendrauf
@@ -1900,6 +1910,18 @@ async function registerStart(e){
   startGerade = true;
   render();
 }
+// Tür 00: Aufwärmen zum 1. Advent – öffnet sich wie die anderen Türen
+function openWarmup(){
+  const sheet = document.getElementById("sheet");
+  sheet.innerHTML = `<button class="close" aria-label="Schließen" onclick="closeDoor()">×</button>
+    <div class="kicker">Tür 00 · Aufwärmen zum 1. Advent<span class="dauer">3 Min.</span></div>
+    <h3 id="sheetTitle">Dein Claude-Start</h3>` + document.getElementById("warmTpl").innerHTML;
+  if(warmVorgemerkt) sheet.querySelector("#warmRemind").textContent = "Erledigt: Du bist vorgemerkt ✓ Am 1. Dezember morgens bekommst du eine kurze Mail, sobald Tür 01 offen ist.";
+  document.getElementById("overlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+  sheet.querySelector(".close").focus();
+}
+document.getElementById("warmDoor").addEventListener("click", e => swingOpen(e.currentTarget, 0));
 function copyWarmup(btn){
   navigator.clipboard?.writeText(document.getElementById("warmPrompt").textContent).then(() => { btn.textContent = "Kopiert ✓"; setTimeout(() => btn.textContent = "Kopieren", 1600) });
 }
