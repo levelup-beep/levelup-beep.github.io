@@ -454,6 +454,19 @@
   .startbox .gate{max-width:560px}
   .startbox .done-msg{color:var(--white); margin:12px 0 0}
   .startbox .done-msg .spam-hint{display:block; margin-top:6px; opacity:.8}
+  /* Aufwärmen zum 1. Advent (nur vor dem 1. Dezember) */
+  .warmup{margin:34px 0 0; border:1px solid var(--accent); background:var(--ink-2); padding:24px 28px; position:relative}
+  .warmup[hidden]{display:none}
+  .warmup h3{font-family:var(--font-display); font-weight:900; text-transform:uppercase; color:var(--white); font-size:clamp(22px, 3.4vw, 30px); line-height:1.02; margin:8px 0 10px}
+  .warmup > p{margin:0 0 6px; max-width:680px}
+  .warm-step{border-top:1px solid var(--hair); padding:16px 0 4px; margin-top:14px; max-width:720px}
+  .warm-step .lbl{font-family:var(--font-mono); font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:6px}
+  .warm-step p{margin:0 0 8px}
+  .warm-step .prompt{margin:10px 0}
+  .warm-step .tip{font-size:14.5px; opacity:.9}
+  .warm-step a{color:var(--accent)}
+  .warm-next{margin:18px 0 0; font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--white)}
+  @media (max-width:560px){ .warmup{padding:20px 16px} }
 
   /* Anmelde-Schranke ab Tür 6 (Nikolaus, erstes Geschenk) */
   .gate input{width:100%; background:var(--ink); border:1px solid var(--hair-2); color:var(--white); font:inherit; padding:12px 14px; margin:6px 0 10px}
@@ -644,6 +657,34 @@
   </header>
 
   <a class="start-jump" id="startJump" href="#startBox" hidden><span id="startJumpText">Soll ich dir am 1. Dezember Bescheid sagen?</span> <b>Erinner mich ↓</b></a>
+
+  <!-- Aufwärmen zum 1. Advent: nur vor dem 1. Dezember sichtbar (im Entwurf mit ?vorstart) -->
+  <section class="warmup" id="warmup" hidden>
+    <div class="kicker">Aufwärmen zum 1. Advent · 3 Minuten</div>
+    <h3>Dein Claude-Start, bevor die erste Tür aufgeht</h3>
+    <p>Am Dienstag geht's los. Damit du dann direkt loslegen kannst, wärmen wir uns heute schon mal auf: Claude öffnen, einen Prompt reinkopieren und staunen. Mehr nicht.</p>
+
+    <div class="warm-step">
+      <div class="lbl">Schritt 1 · Claude öffnen</div>
+      <p>Geh auf <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> oder lade dir die Claude-App aufs Handy. Wähl „Mit Google fortfahren“ oder gib deine E-Mail-Adresse ein und bestätige den Link aus der Mail. Die kostenlose Version reicht.</p>
+    </div>
+
+    <div class="warm-step">
+      <div class="lbl">Schritt 2 · Dein Ferien-Countdown</div>
+      <p>Kopier diesen Prompt in Claude und trag deinen letzten Schultag vor den Ferien ein:</p>
+      <div class="prompt"><span class="ptxt" id="warmPrompt">Ich bin Lehrerin und freue mich schon auf die Weihnachtsferien. Mein letzter Schultag vor den Ferien ist der [Datum eintragen].
+
+Bau mir daraus bitte einen kleinen, weihnachtlichen Countdown als interaktive Seite: Er zeigt, wie viele Schultage noch übrig sind (ohne Wochenenden), und jeden Tag einen kurzen, aufmunternden Satz für Lehrerinnen. Gern mit ein bisschen Schnee. Schlicht und gemütlich.</span><button class="copy" type="button" onclick="copyWarmup(this)">Kopieren</button></div>
+      <p class="tip">Nach ein paar Sekunden baut Claude dir eine kleine Seite mit deinem eigenen Countdown. Am Handy tippst du sie an, um sie zu öffnen. Gefällt dir etwas nicht? Schreib einfach dazu, was anders sein soll, zum Beispiel: „Mach es in Rot und Gold.“</p>
+    </div>
+
+    <div class="warm-step">
+      <div class="lbl">Schritt 3 · Dienstag nicht verpassen</div>
+      <p id="warmRemind">Trag dich unten ein, dann schicke ich dir am 1. Dezember morgens eine kurze Mail, sobald Tür 01 offen ist. <a href="#startBox">Erinner mich ↓</a></p>
+    </div>
+
+    <p class="warm-next">Und am Dienstag? Da fragst nicht du Claude, sondern Claude dich.</p>
+  </section>
 
 
   <section>
@@ -1414,6 +1455,11 @@ function render(){
     st("startDoneText", "dann erinnere ich dich ab morgen jeden Morgen an dein neues Türchen.");
   }
   document.getElementById("startReminderRow").hidden = abStart;
+  // Aufwärmen zum 1. Advent: nur vor dem 1. Dezember, nur Kalender B
+  document.getElementById("warmup").hidden = abStart || kal !== "B";
+  if(!abStart && (startDone || startGerade)){
+    document.getElementById("warmRemind").textContent = "Erledigt: Du bist vorgemerkt ✓ Am 1. Dezember morgens bekommst du eine kurze Mail, sobald Tür 01 offen ist.";
+  }
   document.getElementById("startBox").hidden = !(zeigeStart || startGerade);
   document.getElementById("startJump").hidden = !zeigeStart;
   document.getElementById("startDsLink").href = DATENSCHUTZ_URL;
@@ -1853,6 +1899,9 @@ async function registerStart(e){
   store.set("lul-advent-erinnerung-" + kal, rem.checked || nurErinnerung);
   startGerade = true;
   render();
+}
+function copyWarmup(btn){
+  navigator.clipboard?.writeText(document.getElementById("warmPrompt").textContent).then(() => { btn.textContent = "Kopiert ✓"; setTimeout(() => btn.textContent = "Kopieren", 1600) });
 }
 function copyPrompt(btn, n, which = "prompt"){
   const t = INHALT[kal][n];
